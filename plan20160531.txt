@@ -20,10 +20,29 @@ Chronology
   1. Create Card Class
   2. Create Draw Pile
   3. Create Place Pile
-  4. Create Hand class
-    - Subclasses: UserHand and AIHand
-  5. Create AI
-  6. Create Play
-  7. Create UNO! button
+  4. Create Player class
+    - Subclasses: UserPlayer and AIPlayer
+  5. Create UserPlayer
+  6. Create AIPlayer
+  7. Create Play
+  8. Create UNO! button
 
+Timeline
+May 19 - Create Card Class. If time create Deck of Uno Cards.
+May 20 - Create Deck of Uno Cards if not yet created. Create draw and place subclasses that extend Deck of Uno Cards.
+May 21 - Create uml diagram for Player class. If time start coding.
+May 22 - Code Player class.
+May 23 - Create UserPlayer that extends Player class uml. If time start coding.
+May 24 - Code UserPlayer
+May 25 - If not done with UserPlayer, continue coding. Create AIPlayer that extends Player class uml. If time start coding.
+May 26 - Code AIPlayer
+May 27 - Code AIPlayer
+May 29 - Code AIPlayer
+May 30 - Create Play uml. If time starat coding.
+June 1 - Code Play 
+June 2 - Code Play
+June 3 - Code Play
+June 4 - Add Pizzazz/ think of more pizzazz to add
+June 5 - Add Pizzazz
+June 6 - Project Due
 
