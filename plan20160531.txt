@@ -1,1 +1,29 @@
+# JEM Plan
+Priorities
+  1. Core functionality
+    - Create Card class
+    - Create Stack of Cards Deque (Draw Pile)
+    - Create Stack of Cards Deque (Placed Pile)
+    - Shuffle method
+    - AI (Other Players)
+      - Recursively determines best course of action to take
+    - HeapSort to auto-sort player's hand
+  2. Extra Pizzazz
+    - AI different levels of difficulty
+
+Workload Sharing
+  1. Jackie
+  2. Maggie
+  3. Edward
+
+Chronology
+  1. Create Card Class
+  2. Create Draw Pile
+  3. Create Place Pile
+  4. Create Hand class
+    - Subclasses: UserHand and AIHand
+  5. Create AI
+  6. Create Play
+  7. Create UNO! button
+
 
