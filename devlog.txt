@@ -1,9 +1,25 @@
 # Devlog.txt
 
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+--Reflection--
+
+Obstacles Overcome:
+* Disagreement over project idea. We compromised and 
+  were able to peacefully make a decision!
+
+Unresolved Issues:
+
+Cool Stuff Learned:
+
+Mid-Development Design Changes:
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 ### 05-17-17
 + All members: discussed topic ideas and reached a consensus!
 + Jackie: wrote and emailed project proposal
 + Jackie: created GitHub repo
+
 ### 05-18-17
 + RECEIVED YELLOW LIGHT SIGNAL
 + All members: discussed plan
