@@ -3,8 +3,10 @@
 ### 05-17-17
 + All members: discussed topic ideas and reached a consensus!
 + Jackie: wrote and emailed project proposal
-+ Jackie: created GitHub repo, devlog.txt, and plan20160531.txt
++ Jackie: created GitHub repo
 ### 05-18-17
 + RECEIVED YELLOW LIGHT SIGNAL
++ All members: discussed plan
++ Jackie: registered team repo and typed up plan20160531.txt
 + Maggie: edited project proposal
 + Maggie: updated devlog.txt
