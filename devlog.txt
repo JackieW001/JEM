@@ -23,6 +23,7 @@ Mid-Development Design Changes:
 ### 05-18-17
 + RECEIVED YELLOW LIGHT SIGNAL
 + All members: discussed plan
++ Jackie: added submodule
 + Jackie: registered team repo and typed up plan20160531.txt
 + Maggie: edited project proposal
 + Maggie: updated devlog.txt
