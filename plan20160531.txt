@@ -25,7 +25,8 @@ Chronology
   5. Create UserPlayer
   6. Create AIPlayer
   7. Create Play
-  8. Create UNO! button
+  8. Create Interface (Visual component)
+  9. Create UNO! button
 
 Timeline
 May 19 - Create Card Class. If time create Deck of Uno Cards.
@@ -41,7 +42,7 @@ May 29 - Code AIPlayer
 May 30 - Create Play uml. If time starat coding.
 June 1 - Code Play 
 June 2 - Code Play
-June 3 - Code Play
+June 3 - Add interface
 June 4 - Add Pizzazz/ think of more pizzazz to add
 June 5 - Add Pizzazz
 June 6 - Project Due
