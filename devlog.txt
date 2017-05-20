@@ -27,3 +27,8 @@ Mid-Development Design Changes:
 + Jackie: registered team repo and typed up plan20160531.txt
 + Maggie: edited project proposal
 + Maggie: updated devlog.txt
+
+### 05-19-17
++ Jackie: created uml for entire game, created and finished coding Card class
++ Maggie: created uml for entire game
++ Edward: created Deck class
