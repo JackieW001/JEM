@@ -32,3 +32,12 @@ Mid-Development Design Changes:
 + Jackie: created uml for entire game, created and finished coding Card class
 + Maggie: created uml for entire game
 + Edward: created Deck class
+
+### 05-20-17
++ Maggie: created Player class, worked on Re_UNO driver file
++ Jackie: updated devlog.txt
+
+### 05-21-17
++ Jackie: fixed Player and Re_UNO class names
++ Maggie: updated Card Class, minor addition to Deck class
++ Maggie: updated devlog.txt
