@@ -39,11 +39,11 @@ May 25 - If not done with UserPlayer, continue coding. Create AIPlayer that exte
 May 26 - Code AIPlayer
 May 27 - Code AIPlayer
 May 29 - Code AIPlayer
-May 30 - Create Play uml. If time starat coding.
+May 30 - Create Play uml. If time start coding.
 June 1 - Code Play 
 June 2 - Code Play
 June 3 - Add interface
-June 4 - Add Pizzazz/ think of more pizzazz to add
+June 4 - Add Pizzazz/ think of more pizazz to add
 June 5 - Add Pizzazz
 June 6 - Project Due
 
