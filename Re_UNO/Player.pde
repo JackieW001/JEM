@@ -24,7 +24,7 @@ public class Player
     /**
      * Add a card to the player's hand
      */
-    public void addCard( Card card ) {
+    public void draw( Card card ) {
         hand.add(card);
     }
     
