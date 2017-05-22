@@ -41,3 +41,33 @@ Mid-Development Design Changes:
 + Jackie: fixed Player and Re_UNO class names
 + Maggie: updated Card Class, minor addition to Deck class
 + Maggie: updated devlog.txt
+
+### 05-22-17
++ Jackie: Created Card compareTo() method, elaborated comments
++
++
+
+### 05-23-17
++
++
++
+
+### 05-24-17
++
++
++
+
+### 05-25-17
++
++
++
+
+### 05-26-17
++
++
++
+
+### 05-27-17
++
++
++
