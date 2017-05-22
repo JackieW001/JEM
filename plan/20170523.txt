@@ -1,0 +1,19 @@
+Priorities:
+  1. Finish creating Player Class
+  2. Create UserPlayer Class
+    - overriden playCard() so that user can choose a card to play
+  3. Create AI
+    - playCard() method: places first card that can be played
+    - playBestCard() method that will use recursion to solve for which card to place to get closer to win
+  4. Create Interface
+    - Display UserPlayer Cards (face up)
+    - Display DrawPile
+    - Display PlacePile
+    - Display AI cards (face down)
+  5. Create interaction between user and game
+    - Choosing cards
+    - Drawing cards
+    - Hitting UNO! button
+    - Possibly create opening menu screen where user can choose:
+      - if s/he wants to go first
+      - number of AI players s/he wants to go up against
