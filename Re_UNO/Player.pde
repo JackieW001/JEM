@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-public class Player
-{
+public class Player{
     private String name;
     private ArrayList<Card> hand;
         
@@ -47,7 +46,7 @@ public class Player
     }
    
   
-  /****** ADD COMPARE TO ****************
+ /****** ADD COMPARE TO ****************
     /**
      * autoSort hand using heap sort
      */
@@ -56,7 +55,7 @@ public class Player
             heapify(hand, hand.size(), x);
  
         for (int x = hand.size() - 1; x >= 0; x -= 1){
-            int temp = hand.get(0);
+            Card temp = hand.get(0);
             hand.set(0, hand.get(x));
             hand.set(x, temp);
  
@@ -75,7 +74,7 @@ public class Player
             largest = r;
  
         if (largest != b){
-            int swap = arr.get(b);
+            Card swap = arr.get(b);
             arr.set(b, arr.get(largest));
             arr.set(largest, swap);
  

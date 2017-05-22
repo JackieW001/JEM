@@ -15,8 +15,8 @@ public class Deck{
       //Adds numbers 0-9
       for (int x = 0; x < 10; x++){
          for (int y = 0; y < 4; y++){
-           deck.add(x, col, type);
-           deck.add(x, col, type);
+           deck.add(x, new Card( x, col, type));
+           deck.add(x, new Card (x, col, type));
            col++;
          }
          col = 0;
