@@ -45,8 +45,6 @@ public class Player{
         
     }
    
-  
- /****** ADD COMPARE TO ****************
     /**
      * autoSort hand using heap sort
      */
@@ -66,11 +64,14 @@ public class Player{
         int largest = b;
         int l = 2 * b + 1;  //left
         int r = 2 * b + 2;  //right
- 
-        if (l < a && arr.get(l) > arr.get(largest))
+        
+        Card left = arr.get(l);
+        Card right = arr.get(r);
+        
+        if (l < a && arr.get(l).compareTo(arr.get(largest)) > 0 )
             largest = l;
  
-        if (r < a && arr.get(r) > arr.get(largest))
+        if (r < a && arr.get(r).compareTo(arr.get(largest)) > 0)
             largest = r;
  
         if (largest != b){
@@ -80,6 +81,5 @@ public class Player{
  
             heapify(arr, a, largest);
         }
-    }
-*******************************************/    
+    }   
 }

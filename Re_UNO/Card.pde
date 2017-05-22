@@ -50,10 +50,20 @@ public class Card{
     }
     
     /**
-      compareTo: Blue < Green < Red < Yellow
+      compareTo: Wild < Blue < Green < Red < Yellow 
     */
     public int compareTo( Card other){
-        
+        if (this.getC() < other.getC())
+          return -1;
+        else if (this.getC() > other.getC())
+          return 1;
+        else if (this.getC() == other.getC()){
+           if (this.getValue() < other.getValue())
+             return -1;
+           else if (this.getValue() > other.getValue())
+             return 1;
+        }
+        return 0; 
     }
     
     /**
