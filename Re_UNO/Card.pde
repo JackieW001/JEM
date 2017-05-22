@@ -1,26 +1,44 @@
 public class Card{
 
-  /*
+
     public static final int NOCOLOR = 0;
     public static final int RED = 1;
     public static final int YELLOW = 2;
     public static final int GREEN = 3;
     public static final int BLUE = 4;
-*/
-    public static final String[] COLORS = { "Wild", "Blue", "Green",
-					    "Red", "Yellow" };
-/*
+
     public static final int NOACTION = 0;
     public static final int SKIP = 1;
     public static final int REVERSE = 2;
     public static final int ADD2 = 3;
     public static final int WILD = 4;
     public static final int WILD4 = 5;
-*/
-    public static final String[] ACTIONS = { "", "Skip", "Reverse",
-					     "Add2", "Wild", "Wild4" };
+
+    /************************
+      value between -1 - 9
+      -1: no value (ie action card)
+      0-9: numerical literals
+    ************************/
     int value;
+    
+    /*********************** 
+       value between 0-3
+       0: red
+       1: yellow
+       2: green
+       3: blue
+    ************************/
     int c;
+    
+    /*********************** 
+       value between 0-5
+       0: none (ie is a numerical card)
+       1: reverse
+       2: skip
+       3: +2 (draw 2)
+       4: wild
+       5: wild4 (wild card and draw 4)
+    ************************/
     int action;
 
     /**
@@ -73,17 +91,20 @@ public class Card{
      */
     public boolean playable( Card card ) {
 	    if ( card.c == c ) {
-	      return true;
+	       return true;
 	    }
 	    else if ( card.value == value ) {
-	      return true;
+	       return true;
 	    }
 	    else if ( card.action == action && card.action != 0 ) {
 	       return true;
 	    }
+      else if ( card.action == WILD || card.action == WILD4){
+         return true; 
+      }
 	    else {
 	      return false;
 	    }
-    }
+    }// close playable
     
 }

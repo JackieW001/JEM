@@ -3,7 +3,12 @@ import java.util.ArrayList;
 public class Player{
     private String name;
     private ArrayList<Card> hand;
-        
+     
+    public Player() {
+       name = "Autobot";
+       hand = new ArrayList<Card>();            
+    }
+    
     /**
      * Player constructor
      */
@@ -28,12 +33,12 @@ public class Player{
     }
     
     /**
-     * Choose a card to play.
+     * playCard(Card): Choose a card to play.
      * for AI players
      */
     public Card playCard( Card placedCard ) {
         
-        // play the first playable card we can find
+        // For AI default: play the first playable card we can find
         for ( Card c : hand ) {
             if (c.playable(placedCard)) {
                 hand.remove(c);
@@ -46,7 +51,7 @@ public class Player{
     }
    
     /**
-     * autoSort hand using heap sort
+     * autoSort(): sort hand using heap sort
      */
      public void autoSort(){
         for (int x = hand.size() / 2 - 1; x >= 0; x -= 1)
@@ -59,14 +64,15 @@ public class Player{
  
             heapify(hand, x, 0);
         }
-     }
-    private void heapify(ArrayList<Card> arr, int a, int b){
+     }// close autoSort
+     
+     /**
+     * heapify (ArrayList, int, int): autoSort helper method
+     */
+     private void heapify(ArrayList<Card> arr, int a, int b){
         int largest = b;
         int l = 2 * b + 1;  //left
         int r = 2 * b + 2;  //right
-        
-        Card left = arr.get(l);
-        Card right = arr.get(r);
         
         if (l < a && arr.get(l).compareTo(arr.get(largest)) > 0 )
             largest = l;
@@ -81,5 +87,6 @@ public class Player{
  
             heapify(arr, a, largest);
         }
-    }   
+     }// close heapify
+     
 }
