@@ -7,25 +7,44 @@ public class Deck{
    public Deck(){
       deck = new ArrayList<Card>();
       
-      int value = 0; //For only card types with number/0
-      int col = 0; //4 types of colors (red(0), yellow(1), green(2), blue(3))
-      int type = 0; //6 types of cards (number(0), reverse(1), skip(2), +2(3), wild(4), wild4(5))
-      int TOTAL_NUM_OF_CARDS = 108;
+      /*108 total cards in a deck, four different colors.
+        Number cards 0-9, each number has two cards of the same color, except 0.
+        Action cards, each action card also has a pair for each color, except wild cards and wild4s.
+      */
+      int col = 1; //5 types of colors (wild/nocolor(0), red(1), yellow(2), green(3), blue(4))
+      int type = 0; //6 types of cards (number(0), skip(1), reverse(2), +2(3), wild(4), wild4(5))     
       
       //Adds numbers 0-9
       for (int x = 0; x < 10; x++){
          for (int y = 0; y < 4; y++){
-           deck.add(x, new Card( x, col, type));
-           deck.add(x, new Card (x, col, type));
+           deck.add(new Card (x, col, type)); 
+           deck.add(new Card (x, col, type));
            col++;
          }
-         col = 0;
+         col = 1;
       }
       
-      // remove first 4 cards
+      // remove first 4 cards (specifically the extra zeroes)
       for (int i = 0; i < 4; i++){
-         deck.remove(0); 
-      }    
+         deck.remove(i); //removes only one of the zeros for each color)
+      }
+      
+      //Adds the action cards
+      
+      //Adds the skip, reverse, and +2 variations
+      for (int c = 1; c < 5; c++){ //Goes through the four different colors for each card
+        for (int t = 1; t < 4; t++){  //Goes through three different types (skip, reverse, 2+) for each color
+        //Adds a pair of action cards
+         deck.add(new Card(10, c, t)); 
+         deck.add(new Card(10, c, t));
+        }
+      }
+
+      //Adds the wild and wild4 action cards
+      for (int w = 0; w < 4; w++){ //Adds four of each
+         deck.add(new Card(10, 0, 4)); //Adds the wild
+         deck.add(new Card(10, 0, 5)); //Adds the wild+4 
+      }
    }
    
    public Card get( int i ){

@@ -1,6 +1,5 @@
 public class Card{
 
-
     public static final int NOCOLOR = 0;
     public static final int RED = 1;
     public static final int YELLOW = 2;
@@ -19,7 +18,7 @@ public class Card{
       -1: no value (ie action card)
       0-9: numerical literals
     ************************/
-    int value;
+    private int value;
     
     /*********************** 
        value between 0-3
@@ -28,7 +27,7 @@ public class Card{
        2: green
        3: blue
     ************************/
-    int c;
+    private int c;
     
     /*********************** 
        value between 0-5
@@ -39,7 +38,7 @@ public class Card{
        4: wild
        5: wild4 (wild card and draw 4)
     ************************/
-    int action;
+    private int action;
 
     /**
      * Card Constructor
@@ -63,7 +62,7 @@ public class Card{
     }
     
     // will only be used for setting the color of a wild card
-    public void setColor( int newColor){
+    public void setColor( int newColor ){
        c = newColor;
     }
     
@@ -90,16 +89,16 @@ public class Card{
      * if the actions match ( for action cards ).
      */
     public boolean playable( Card card ) {
-	    if ( card.c == c ) {
+	    if ( card.getC() == c ) {
 	       return true;
 	    }
-	    else if ( card.value == value ) {
+	    else if ( card.getValue() == value ) {
 	       return true;
 	    }
-	    else if ( card.action == action && card.action != 0 ) {
+	    else if ( card.getAction() == action && card.getAction() != 0 ) {
 	       return true;
 	    }
-      else if ( card.action == WILD || card.action == WILD4){
+      else if ( card.getAction() == WILD || card.getAction() == WILD4){
          return true; 
       }
 	    else {

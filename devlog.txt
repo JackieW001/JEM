@@ -8,8 +8,18 @@ Obstacles Overcome:
   were able to peacefully make a decision!
 
 Unresolved Issues:
+- We need to work on the concepts for AIPlayer and UserPlayer. Does
+UserPlayer need anything new from the Player superclass?
+How to create an AI for the game (Maybe look at one of our
+old projects in CS?).
 
 Cool Stuff Learned:
+For loops can make instantiating variables unnecessary, but
+variables can help keep code easy to read and understand.
+However, if a variable that is instantiated in a class's method
+isn't used at all in the method besides instantiation, the 
+code would not work (it would underline it). Processing
+basically helps keep code efficient. :)
 
 Mid-Development Design Changes:
 
@@ -44,7 +54,8 @@ Mid-Development Design Changes:
 
 ### 05-22-17
 + Jackie: Created Card compareTo() method, elaborated comments
-+
++ Edward: Finished Deck()'s creation and worked on debugging, elaborated comments, 
+started working on Player subclasses. Updated devlog.txt
 +
 
 ### 05-23-17
