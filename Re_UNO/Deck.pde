@@ -35,15 +35,15 @@ public class Deck{
       for (int c = 1; c < 5; c++){ //Goes through the four different colors for each card
         for (int t = 1; t < 4; t++){  //Goes through three different types (skip, reverse, 2+) for each color
         //Adds a pair of action cards
-         deck.add(new Card(10, c, t)); 
-         deck.add(new Card(10, c, t));
+         deck.add(new Card(-1, c, t)); 
+         deck.add(new Card(-1, c, t));
         }
       }
 
       //Adds the wild and wild4 action cards
       for (int w = 0; w < 4; w++){ //Adds four of each
-         deck.add(new Card(10, 0, 4)); //Adds the wild
-         deck.add(new Card(10, 0, 5)); //Adds the wild+4 
+         deck.add(new Card(-1, -1, 4)); //Adds the wild
+         deck.add(new Card(-1, -1, 5)); //Adds the wild+4 
       }
    }
    

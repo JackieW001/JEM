@@ -21,7 +21,8 @@ public class Card{
     private int value;
     
     /*********************** 
-       value between 0-3
+       value between -1-3
+       -1: no color
        0: red
        1: yellow
        2: green
