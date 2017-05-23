@@ -88,7 +88,7 @@ public class Card{
      * returns true if the colors or values match, or
      * if the actions match ( for action cards ).
      */
-    public boolean playable( Card card ) {
+    public boolean isPlayable( Card card ) {
 	    if ( card.getC() == c ) {
 	       return true;
 	    }
@@ -105,5 +105,9 @@ public class Card{
 	      return false;
 	    }
     }// close playable
+    
+    public String toString(){
+       return "{ " + "value: " + value + ", color: " + c + ", action: " + action + "}" ;
+    }
     
 }

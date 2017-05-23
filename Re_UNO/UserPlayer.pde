@@ -9,23 +9,24 @@ public class UserPlayer extends Player{
   color rectColor;
   color rectHighlight;
   
-  public UserPlayer(){
-    
-
-} 
-
-public void displayEndTurnButton() {
-      /********* EndTurn button ********/
+  UserPlayer(){
+    super();
+  } 
+  
+  void displayEndTurnButton() {
+   /********* EndTurn button ********/
     rectColor = color(0);
     rectHighlight = color(51);
     rectX = width - 20;
     rectY = height - 20;
-    //ellipseMode(CENTER
     /*********************************/
     
     rect( 10, 10, rectX, rectY );
   
-}
-void mousePressed() {
-}
+  }
+  
+  void playCard (Card card){
+     
+  }
+
 }

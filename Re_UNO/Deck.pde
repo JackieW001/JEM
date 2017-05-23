@@ -58,5 +58,9 @@ public class Deck{
    public int size(){
      return deck.size();
    }
+   
+   public String toString(){
+     return deck.toString();
+   }
 
 }

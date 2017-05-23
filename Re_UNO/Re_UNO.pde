@@ -12,10 +12,11 @@ public void setup(){
   PlacedPile = new ArrayList<Card>();
 
   player = new UserPlayer();
-  AI1 = new Player();
-  AI2 = new Player();
-  AI3 = new Player();
+  AI1 = new AIPlayer();
+  AI2 = new AIPlayer();
+  AI3 = new AIPlayer();
   
+  System.out.println(DrawPile.toString());
   shuffle(DrawPile);
 }
 
@@ -33,5 +34,5 @@ public void setup(){
 
 public void draw(){
    background(#70C984);
-   player.displayEndTurnButton();
+
  }

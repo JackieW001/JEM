@@ -3,20 +3,46 @@ import java.util.ArrayList;
 public class Player{
     private String name;
     private ArrayList<Card> hand;
+    private int handSize;
+    private Player _next;
+    private Player _prev;
      
+    /******************* CONSTRUCTORS *****************/ 
+    /**
+     * Player constructor
+     */ 
     public Player() {
        name = "Autobot";
-       hand = new ArrayList<Card>();            
+       hand = new ArrayList<Card>(); 
+       _next = null;
+       _prev = null;
+    }
+    
+    public Player(Player newNext, Player newPrev) {
+       name = "Autobot";
+       hand = new ArrayList<Card>(); 
+       _next = newNext;
+       _prev = newPrev;
     }
     
     /**
-     * Player constructor
+     * Player constructor with name
      */
     public Player( String s ) {
         name = s;
-        hand = new ArrayList<Card>();            
+        hand = new ArrayList<Card>();  
+        _next = null;
+        _prev = null;
     }
-
+    
+    public Player( String s, Player newNext, Player newPrev ) {
+        name = s;
+        hand = new ArrayList<Card>(); 
+        _next = newNext;
+        _prev = newPrev;
+    }
+    /***********************************************************/
+    
     public String getName() {
         return name;
     }
@@ -25,10 +51,14 @@ public class Player{
         return hand;
     }
     
+    public int getHandSize(){
+       return hand.size(); 
+    }
+    
     /**
      * Add a card to the player's hand
      */
-    public void draw( Card card ) {
+    public void drawCard( Card card ) {
         hand.add(card);
     }
     
@@ -36,17 +66,15 @@ public class Player{
      * playCard(Card): Choose a card to play.
      * for AI players
      */
-    public Card playCard( Card placedCard ) {
+    public void playCard( Card placedCard ) {
         
         // For AI default: play the first playable card we can find
         for ( Card c : hand ) {
-            if (c.playable(placedCard)) {
+            if (c.isPlayable(placedCard)) {
                 hand.remove(c);
-                return c;
             }
         }        
-        // no playable card
-        return null;//skip turn
+        // if no playable card endTurn
         
     }
    
