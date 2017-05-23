@@ -11,7 +11,7 @@ public void setup(){
   DrawPile = new Deck();
   PlacedPile = new ArrayList<Card>();
 
-  player = new Player();
+  player = new UserPlayer();
   AI1 = new Player();
   AI2 = new Player();
   AI3 = new Player();
@@ -33,4 +33,5 @@ public void setup(){
 
 public void draw(){
    background(#70C984);
+   player.displayEndTurnButton();
  }
