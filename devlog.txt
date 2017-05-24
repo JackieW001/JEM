@@ -53,15 +53,16 @@ Mid-Development Design Changes:
 + Maggie: updated devlog.txt
 
 ### 05-22-17
-+ Jackie: Created Card compareTo() method, elaborated comments
-+ Edward: Finished Deck()'s creation and worked on debugging, elaborated comments, 
-started working on Player subclasses. Updated devlog.txt
-+
++ Jackie: created Card compareTo() method, elaborated comments
++ Edward: finished Deck()'s creation and worked on debugging.
++ Edward: elaborated comments, worked on Player subclasses, updated devlog.txt
 
 ### 05-23-17
-+
-+
-+
++ Edward: created ArrayPriorityQueue and Choice classes
++ Maggie: worked on UserPlayer and Re_UNO classes, updated devlog.txt
++ Jackie: edited Deck class, added toString method to Card and Deck classes
++ Jackie: worked on UML diagrams
++ Maggie: finished up proposal.doc and uploaded proposal.pdf
 
 ### 05-24-17
 +
