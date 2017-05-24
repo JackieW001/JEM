@@ -55,6 +55,14 @@ public class Player{
        return hand.size(); 
     }
     
+    public Player getNext() {
+      return _next;
+    }
+    
+    public Player getPrev() {
+      return _prev;
+    }
+    
     /**
      * Add a card to the player's hand
      */
@@ -116,5 +124,32 @@ public class Player{
             heapify(arr, a, largest);
         }
      }// close heapify
+     
+     int receiveAction( Card c ) {
+       int x = c.getAction();
+       if ( x == 0 ) {//noAction
+         return 0;
+       }
+       if ( x == 1 ) {//skip
+         Player temp = _next.getNext().getNext();
+         _next = temp;
+         sdghbf
+         return 0;
+       }
+       if ( x == 2 ) {//reverse
+       return 0;
+       }
+       if ( x ==3 ) {//add2
+       return 2;
+       }
+       if ( x == 4 ) {//wild
+       return 0;
+       }
+       if ( x == 5 ) //wild4
+       return 4;
+     }
+       
+       return 0;
+     }
      
 }
