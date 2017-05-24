@@ -1,15 +1,15 @@
 
-public class ArrayPriorityQueue {
+public class ArrayPriorityQueue <T> {
     
-    private ArrayList<Object> list;
+    private ArrayList<T> list;
 
     //Default Constructor
     public ArrayPriorityQueue() {
-        list = new ArrayList<Object>();
+        list = new ArrayList<T>();
     }
 
     // Adds element in ordered priority queue starting from bottom
-    public void add(Object n) {
+    public void add(T n) {
         int count;
         for(count = 0; count < list.size(); count++) {
             // This is why we use generics
@@ -45,8 +45,8 @@ public class ArrayPriorityQueue {
     /// Utility functions:
 
     // inserts "n" on the index "index"
-    private void insert(Object n, int index) {
-        list.add(0); // Free up an extra slot
+    private void insert(T n, int index) {
+        list.add(list.size(),null); // Free up an extra slot
         for(int i = list.size() - 1; i > index; i--) {
             list.set(i, list.get(i - 1));
         }

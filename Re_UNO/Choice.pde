@@ -12,6 +12,8 @@ public class ChoiceNode{
   ArrayPriorityQueue choices;
   
   public ChoiceNode(){
-     choices = new ArrayPriorityQueue(); 
+     choices = new ArrayPriorityQueue<Integer>();
+     for (int x = 0; x < 7; x++)
+       choices.add((Integer)x);
   }
 }
