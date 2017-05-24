@@ -25,7 +25,7 @@ public class UserPlayer extends Player{
   
   }
   
-  void playCard (Card card){
+  public void playCard (Card card){
      
   }
 
