@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Player{
-    private String name;
-    private ArrayList<Card> hand;
-    private int handSize;
-    private Player _next;
-    private Player _prev;
+    String name;
+    ArrayList<Card> hand;
+    int handSize;
+    Player _next;
+    Player _prev;
      
     /******************* CONSTRUCTORS *****************/ 
     /**
@@ -141,7 +141,6 @@ public class Player{
        if ( x == 1 ) {//skip
          Player temp = _next.getNext().getNext();
          _next = temp;
-         sdghbf
          return 0;
        }
        if ( x == 2 ) {//reverse
@@ -157,9 +156,9 @@ public class Player{
        if ( x == 4 ) {//wild
        return 0;
        }
-       if ( x == 5 ) //wild4
+       if ( x == 5 ){ //wild4
        return 4;
-     }
+       }
        
        return 0;
      }
