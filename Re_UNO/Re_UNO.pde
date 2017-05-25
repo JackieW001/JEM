@@ -19,12 +19,14 @@ public void setup(){
   System.out.println(DrawPile.toString());
   shuffle(DrawPile);
   
-  while ( DrawPile.removeCard(0) != null ) {
+  for ( int i = 0; i < 8; i ++) {
+    if ( DrawPile.removeCard(0) != null ) {
     player.drawCard(DrawPile.removeCard(0));
     AI1.drawCard(DrawPile.removeCard(0));
     AI2.drawCard(DrawPile.removeCard(0));
     AI3.drawCard(DrawPile.removeCard(0));
-  }
+    }
+    }
 }
 
 /**
