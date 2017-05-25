@@ -62,4 +62,9 @@ public class Deck{
      return deck.toString();
    }
 
+  public Card remove(){
+    Card ret = deck.get(deck.size()-1);
+    deck.remove(deck.size()-1);
+    return ret;
+  }
 }

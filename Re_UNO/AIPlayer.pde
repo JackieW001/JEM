@@ -21,9 +21,12 @@ public class AIPlayer extends Player{
      return false;
    }
    
-   int askItself(){
-      if (hasPlayable())
-        return 1; //temp return method
-      return 0;
+  
+   
+   void askItself(){
+      if (hasPlayable()){
+         
+      }        
+      else drawCard(DrawPile.remove());
    }
 }
