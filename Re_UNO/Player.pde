@@ -63,6 +63,14 @@ public class Player{
       return _prev;
     }
     
+    public void setNext( Player p ) {
+      _next = p;
+    }
+    
+    public vois setPrev( Player p ) {
+      _prev = p;
+    }
+    
     /**
      * Add a card to the player's hand
      */
@@ -137,6 +145,10 @@ public class Player{
          return 0;
        }
        if ( x == 2 ) {//reverse
+       Player temp1 = _prev;
+       Player temp2 = _next;
+       setNext( temp1 );
+       setPrev( temp2 );
        return 0;
        }
        if ( x ==3 ) {//add2
