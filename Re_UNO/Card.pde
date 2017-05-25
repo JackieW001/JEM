@@ -14,19 +14,19 @@ public class Card{
     public static final int WILD4 = 5;
 
     /************************
-      value between -1 - 9
-      -1: no value (ie action card)
+      value between 0 - 9, 99
+      99: no value (ie action card)
       0-9: numerical literals
     ************************/
     private int value;
     
     /*********************** 
        value between -1-3
-       -1: no color
-       0: red
-       1: yellow
-       2: green
-       3: blue
+       0: no color
+       1: red
+       2: yellow
+       3: green
+       4: blue
     ************************/
     private int c;
     
