@@ -11,14 +11,13 @@ public class Deck{
         Number cards 0-9, each number has two cards of the same color, except 0.
         Action cards, each action card also has a pair for each color, except wild cards and wild4s.
       */
-      int col = 1; //5 types of colors (wild/nocolor(0), red(1), yellow(2), green(3), blue(4))
-      int type = 0; //6 types of cards (number(0), skip(1), reverse(2), +2(3), wild(4), wild4(5))     
+      int col = 1; //5 types of colors (wild/nocolor(0), red(1), yellow(2), green(3), blue(4))      
       
       //Adds numbers 0-9
       for (int x = 0; x < 10; x++){
          for (int y = 0; y < 4; y++){
-           deck.add(new Card (x, col, type)); 
-           deck.add(new Card (x, col, type));
+           deck.add(new Card (x, col, 0)); 
+           deck.add(new Card (x, col, 0));
            col++;
          }
          col = 1;
@@ -29,7 +28,7 @@ public class Deck{
          deck.remove(i); //removes only one of the zeros for each color)
       }
       
-      //Adds the action cards
+      //Adds the action cards (number(0), skip(1), reverse(2), +2(3), wild(4), wild4(5))
       
       //Adds the skip, reverse, and +2 variations
       for (int c = 1; c < 5; c++){ //Goes through the four different colors for each card
