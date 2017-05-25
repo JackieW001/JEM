@@ -59,6 +59,12 @@ public class Deck{
      return deck.size();
    }
    
+   public Card removeCard( int i ) {
+     if (deck.size() == 0 ) { return null; }
+     Card ret = deck.remove(i);  
+     return ret;
+   }
+   
    public String toString(){
      return deck.toString();
    }

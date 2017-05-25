@@ -67,7 +67,7 @@ public class Player{
       _next = p;
     }
     
-    public vois setPrev( Player p ) {
+    public void setPrev( Player p ) {
       _prev = p;
     }
     
