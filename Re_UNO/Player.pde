@@ -2,16 +2,15 @@ import java.util.ArrayList;
 
 public class Player{
     String name;
-<<<<<<< HEAD
     ArrayList<Card> hand; // max 35 cards
     Player _next;
     Player _prev;
-=======
+
     ArrayList<Card> hand;
     int handSize;
     //Player _next;
     //Player _prev;
->>>>>>> f8e252232af81dab993c49c90477c492e1adaaec
+
      
     /******************* CONSTRUCTORS *****************/ 
     /**
@@ -76,7 +75,7 @@ public class Player{
     public void setPrev( Player p ) {
       _prev = p;
     }
-<<<<<<< HEAD
+
     
     public void displayHand(){
      
@@ -104,7 +103,7 @@ public class Player{
    
 =======
 */    
->>>>>>> f8e252232af81dab993c49c90477c492e1adaaec
+
     /**
      * Add a card to the player's hand
      */
