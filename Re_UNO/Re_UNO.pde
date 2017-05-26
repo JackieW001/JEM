@@ -1,12 +1,7 @@
 /********* INSTANTIATE VARIABLES ********/
 Deck DrawPile;
-<<<<<<< HEAD
 Card card;
 ArrayList<Card> PlacedPile;
-=======
-ArrayList<Card> PlacedPile; 
->>>>>>> f8e252232af81dab993c49c90477c492e1adaaec
-
 Player player,AI1,AI2,AI3;
 /****************************************/
 //Starts up the game
