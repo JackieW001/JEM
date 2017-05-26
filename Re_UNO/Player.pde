@@ -2,9 +2,16 @@ import java.util.ArrayList;
 
 public class Player{
     String name;
+<<<<<<< HEAD
     ArrayList<Card> hand; // max 35 cards
     Player _next;
     Player _prev;
+=======
+    ArrayList<Card> hand;
+    int handSize;
+    //Player _next;
+    //Player _prev;
+>>>>>>> f8e252232af81dab993c49c90477c492e1adaaec
      
     /******************* CONSTRUCTORS *****************/ 
     /**
@@ -13,15 +20,15 @@ public class Player{
     public Player() {
        name = "Autobot";
        hand = new ArrayList<Card>(); 
-       _next = null;
-       _prev = null;
+       //_next = null;
+       //_prev = null;
     }
     
     public Player(Player newNext, Player newPrev) {
        name = "Autobot";
        hand = new ArrayList<Card>(); 
-       _next = newNext;
-       _prev = newPrev;
+       //_next = newNext;
+       //_prev = newPrev;
     }
     
     /**
@@ -30,15 +37,15 @@ public class Player{
     public Player( String s ) {
         name = s;
         hand = new ArrayList<Card>();  
-        _next = null;
-        _prev = null;
+        //_next = null;
+        //_prev = null;
     }
     
     public Player( String s, Player newNext, Player newPrev ) {
         name = s;
         hand = new ArrayList<Card>(); 
-        _next = newNext;
-        _prev = newPrev;
+        //_next = newNext;
+        //_prev = newPrev;
     }
     /***********************************************************/
     
@@ -54,7 +61,7 @@ public class Player{
        return hand.size(); 
     }
     
-    public Player getNext() {
+/*   public Player getNext() {
       return _next;
     }
     
@@ -69,6 +76,7 @@ public class Player{
     public void setPrev( Player p ) {
       _prev = p;
     }
+<<<<<<< HEAD
     
     public void displayHand(){
      
@@ -94,6 +102,9 @@ public class Player{
      
    }
    
+=======
+*/    
+>>>>>>> f8e252232af81dab993c49c90477c492e1adaaec
     /**
      * Add a card to the player's hand
      */
@@ -104,15 +115,17 @@ public class Player{
     
     /**
      * playCard(Card): Choose a card to play.
-     * for AI players
+     * for AI players (Simple)
      */
     public void playCard( Card placedCard ) {
         
         // For AI default: play the first playable card we can find
         for ( Card c : hand ) {
             if (c.isPlayable(placedCard)) {
+                PlacedPile.add(c);
                 hand.remove(c);
             }
+            
         }        
         // if no playable card endTurn
         
@@ -157,7 +170,7 @@ public class Player{
         }
      }// close heapify
      
-     int receiveAction( Card c ) {
+/*     int receiveAction( Card c ) {
        int x = c.getAction();
        if ( x == 0 ) {//noAction
          return 0;
@@ -187,5 +200,5 @@ public class Player{
        
        return 0;
      }
-     
+     */
 }

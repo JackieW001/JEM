@@ -58,8 +58,19 @@ public class Deck{
      return deck.size();
    }
    
+   public Card removeCard( int i ) {
+     if (deck.size() == 0 ) { return null; }
+     Card ret = deck.remove(i);  
+     return ret;
+   }
+   
    public String toString(){
      return deck.toString();
    }
 
+  public Card remove(){
+    Card ret = deck.get(deck.size()-1);
+    deck.remove(deck.size()-1);
+    return ret;
+  }
 }

@@ -65,14 +65,14 @@ Mid-Development Design Changes:
 + Maggie: finished up proposal.doc and uploaded proposal.pdf
 
 ### 05-24-17
-+
-+
-+
++ All Members: Worked on debugging issues
++ Jackie: Debugged main problems
 
 ### 05-25-17
-+
-+
-+
++ Edward: Worked on AIPlayer and Deck classes, edited Player (Continued conceptualizing), added comments
++ Jackie: Worked on AI and Deck classes
++ Maggie: Worked on Player class
++ Edward: Updated devlog.txt
 
 ### 05-26-17
 +
