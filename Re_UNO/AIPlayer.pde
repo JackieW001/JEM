@@ -19,7 +19,7 @@ public class AIPlayer extends Player{
    boolean hasPlayable(){
      ArrayList<Card> temp = hand;
      for (int x = 0; x < temp.size(); x++){
-        if (temp.get(x).isPlayable(PlacedPile.get(PlacedPile.size()-1)))
+        if (temp.get(x).isPlayable())
           return true;
      }
      return false;
