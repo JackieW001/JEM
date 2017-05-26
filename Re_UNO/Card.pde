@@ -40,7 +40,12 @@ public class Card{
        5: wild4 (wild card and draw 4)
     ************************/
     private int action;
-
+    
+    // cardImage to load and display
+    PImage cardImg;
+    int cardHeight;
+    int cardWidth;
+    
     /**
      * Card Constructor
      */
@@ -48,6 +53,27 @@ public class Card{
        value = newVal;
        c = newColor;
        action = newAction;
+       String fileName = "./img/" + value + "_" + c + "_" + action + ".jpg";
+       System.out.println("Filename: " + fileName);
+       
+       File file = new File(fileName);
+       if (file.exists()) {
+         System.out.println("File exists");
+         cardImg = loadImage(fileName);
+       }
+       else {
+         System.out.println("File DO NOT exists");
+         cardImg = loadImage("./img/0_0_0.jpg");
+       }
+       
+       cardImg = loadImage(fileName);
+       cardImg.resize(60,90);
+       cardHeight = cardImg.height;
+       cardWidth = cardImg.width;
+    }
+    
+    public void display(int x, int y){
+       image(cardImg, x, y);
     }
     
     public int getValue(){

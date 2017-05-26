@@ -2,8 +2,7 @@ import java.util.ArrayList;
 
 public class Player{
     String name;
-    ArrayList<Card> hand;
-    int handSize;
+    ArrayList<Card> hand; // max 35 cards
     Player _next;
     Player _prev;
      
@@ -67,14 +66,39 @@ public class Player{
       _next = p;
     }
     
-    public vois setPrev( Player p ) {
+    public void setPrev( Player p ) {
       _prev = p;
     }
     
+    public void displayHand(){
+     
+     // spacing between cards
+     int space = 70; //= (width-200)/getHandSize();
+      if (getHandSize() > 16)
+          space = 25;
+       else if (getHandSize() > 8)
+          space = 50;
+          
+     // position of left most card
+     int offset = (width/2) - (space*((getHandSize() - 1)/2)) - 30;
+     
+     //System.out.println("offset: " +offset);
+     //System.out.println("display width: " + width);
+     //System.out.println("hand Size: "+ getHandSize());
+     
+     
+     for (int i = 0; i < hand.size(); i++){
+        hand.get(i).display(offset, height-hand.get(i).cardHeight-20);
+        offset += space; 
+     }
+     
+   }
+   
     /**
      * Add a card to the player's hand
      */
     public void drawCard( Card card ) {
+      // hand.add(DrawPile.removeCard());
         hand.add(card);
     }
     
@@ -151,7 +175,8 @@ public class Player{
        return 0;
        }
        if ( x ==3 ) {//add2
-       return 2;
+         drawCard(new Card(0,0,0));
+         return 2;
        }
        if ( x == 4 ) {//wild
        return 0;

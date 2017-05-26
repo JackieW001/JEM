@@ -13,6 +13,7 @@ public class UserPlayer extends Player{
     super();
   } 
   
+  
   /*
   void displayEndTurnButton() {
     rectColor = color(0);
@@ -25,8 +26,5 @@ public class UserPlayer extends Player{
   }
   */
   
-  public void playCard (Card card){
-     
-  }
 
 }
