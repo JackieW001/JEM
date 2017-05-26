@@ -115,7 +115,8 @@ public class Card{
      * returns true if the colors or values match, or
      * if the actions match ( for action cards ).
      */
-    public boolean isPlayable( Card card ) {
+    public boolean isPlayable() {
+      Card card = PlacedPile.get(PlacedPile.size()-1);
 	    if ( card.getC() == c ) {
 	       return true;
 	    }
@@ -125,7 +126,7 @@ public class Card{
 	    else if ( card.getAction() == action && card.getAction() != 0 ) {
 	       return true;
 	    }
-      else if ( card.getAction() == WILD || card.getAction() == WILD4){
+      else if ( card.getAction() == 0 && card.getAction() == WILD || card.getAction() == WILD4){
          return true; 
       }
 	    else {
