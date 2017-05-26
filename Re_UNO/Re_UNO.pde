@@ -23,8 +23,6 @@ public void setup(){
   System.out.println(DrawPile.toString());
   shuffle(DrawPile);
   
-  for (int i = 0; i < 10; i++)
-    player.drawCard(new Card(99,0,4));
 
 
   System.out.println(DrawPile.toString()); //depicts the deck
@@ -33,10 +31,10 @@ public void setup(){
   //gives each player their card; initalize hand
   for ( int i = 0; i < 8; i ++) {
         if ( DrawPile.removeCard(0) != null ) {
-        player.drawCard(DrawPile.removeCard(0));
-        AI1.drawCard(DrawPile.removeCard(0));
-        AI2.drawCard(DrawPile.removeCard(0));
-        AI3.drawCard(DrawPile.removeCard(0));
+        player.drawCard();
+        AI1.drawCard();
+        AI2.drawCard();
+        AI3.drawCard();
         }
     }
 
@@ -59,7 +57,7 @@ public void draw(){
    player.displayHand();
    //System.out.println("x, y: " + mouseX +","+ mouseY);
    if (mousePressed   && player.getHandSize()<36){
-      player.drawCard(card); 
+      player.drawCard(); 
    }
    
 

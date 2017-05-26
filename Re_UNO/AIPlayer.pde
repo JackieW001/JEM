@@ -54,7 +54,7 @@ Returns an int that represents a different card being placed.
    //plays based on decision made in askItself()
    void playCard(int x){
        if (x == 6){
-         drawCard(DrawPile.remove());
+         //drawCard(DrawPile.remove());
          return;
        }
        else if (x == 5){

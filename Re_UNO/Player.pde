@@ -6,7 +6,6 @@ public class Player{
     Player _next;
     Player _prev;
 
-    ArrayList<Card> hand;
     int handSize;
     //Player _next;
     //Player _prev;
@@ -60,7 +59,7 @@ public class Player{
        return hand.size(); 
     }
     
-/*   public Player getNext() {
+   public Player getNext() {
       return _next;
     }
     
@@ -101,14 +100,15 @@ public class Player{
      
    }
    
-*/    
+    
 
     /**
      * Add a card to the player's hand
      */
-    public void drawCard( Card card ) {
-      // hand.add(DrawPile.removeCard());
-        hand.add(card);
+    public void drawCard() {
+        if ( DrawPile.removeCard(0) != null ) {
+           hand.add(DrawPile.removeCard(0)); 
+        }
     }
     
     /**
