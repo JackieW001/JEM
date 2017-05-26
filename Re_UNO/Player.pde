@@ -80,15 +80,17 @@ public class Player{
     
     /**
      * playCard(Card): Choose a card to play.
-     * for AI players
+     * for AI players (Simple)
      */
     public void playCard( Card placedCard ) {
         
         // For AI default: play the first playable card we can find
         for ( Card c : hand ) {
             if (c.isPlayable(placedCard)) {
+                PlacedPile.add(c);
                 hand.remove(c);
             }
+            
         }        
         // if no playable card endTurn
         

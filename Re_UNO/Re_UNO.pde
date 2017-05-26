@@ -1,24 +1,26 @@
 /********* INSTANTIATE VARIABLES ********/
 Deck DrawPile;
-ArrayList<Card> PlacedPile;
+ArrayList<Card> PlacedPile; 
 
 Player player,AI1,AI2,AI3;
 /****************************************/
-
+//Starts up the game
 public void setup(){
-  size(1000, 650);
+  size(1000, 650); //creates the size of the window
   
-  DrawPile = new Deck();
-  PlacedPile = new ArrayList<Card>();
+  DrawPile = new Deck(); //instantiates a new Deck
+  PlacedPile = new ArrayList<Card>(); //instantiates an empty placedpile
 
-  player = new UserPlayer();
+  //instantiates the player and AI
+  player = new UserPlayer(); 
   AI1 = new AIPlayer();
   AI2 = new AIPlayer();
   AI3 = new AIPlayer();
   
-  System.out.println(DrawPile.toString());
-  shuffle(DrawPile);
+  System.out.println(DrawPile.toString()); //depicts the deck
+  shuffle(DrawPile); //shuffles the deck
   
+  //gives each player their card
   for ( int i = 0; i < 8; i ++) {
     if ( DrawPile.removeCard(0) != null ) {
     player.drawCard(DrawPile.removeCard(0));
@@ -30,7 +32,7 @@ public void setup(){
 }
 
 /**
-* shuffle method
+* shuffle method: mixes up the cards in the deck, randomizes the order
 */
   public void shuffle( Deck d ) {
      for ( int i = 0; i < d.size(); i++ ) {
