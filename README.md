@@ -28,6 +28,6 @@ Now that you have been given a run down of RE: UNO! all that's left now is to pl
 1. Open up a fresh terminal.
 2. cd into the directory you would like to store a local copy of RE: UNO!
 3. In the terminal, type `$ git clone git@github.com:JackieW001/JEM.git`
-4. Within the same terminal, type '$ cd JEM/RE_UNO/`
-5. Now run '$ processing Re_UNO.pde`
+4. Within the same terminal, type `$ cd JEM/RE_UNO/`
+5. Now run `$ processing Re_UNO.pde`
 6. Have fun!
