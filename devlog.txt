@@ -1,3 +1,5 @@
+# JEM
+Jackie Woo, Edward Ro, Maggie Xia
 # Devlog.txt
 
 -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -75,11 +77,22 @@ Mid-Development Design Changes:
 + Edward: Updated devlog.txt
 
 ### 05-26-17
-+
++ Jackie: Worked on displaying UserPlayer and AI player hands
 +
 +
 
 ### 05-27-17
++ Jackie: Worked on allowing user player to draw cards and place cards in respective piles
 +
 +
+
+### 05-28-17
++ Jackie: Worked on allowing user player to draw cards and place cards in respective piles
 +
++
+
+### 05-29-17
++ Jackie: Worked on creating circlar DLL nodes to connect players
++
++
+
