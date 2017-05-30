@@ -1,5 +1,5 @@
-public class Card{
-
+public class Card {
+  
     public static final int NOCOLOR = 0;
     public static final int RED = 1;
     public static final int YELLOW = 2;
@@ -45,34 +45,37 @@ public class Card{
     PImage cardImg;
     int cardHeight;
     int cardWidth;
+    int cardX,cardY;
     
-    /**
-     * Card Constructor
-     */
-    public Card( int newVal, int newColor, int newAction){
-       value = newVal;
-       c = newColor;
-       action = newAction;
-       String fileName = "./img/" + value + "_" + c + "_" + action + ".jpg";
-       System.out.println("Filename: " + fileName);
-       
-       File file = new File(fileName);
-       if (file.exists()) {
-         System.out.println("File exists");
-         cardImg = loadImage(fileName);
-       }
-       else {
-         System.out.println("File DO NOT exists");
-         cardImg = loadImage("./img/0_0_0.jpg");
-       }
-       
-       cardImg = loadImage(fileName);
-       cardImg.resize(60,90);
-       cardHeight = cardImg.height;
-       cardWidth = cardImg.width;
+    /***************** CONSTRUCTOR *************************/
+    Card(int newVal, int newColor, int newAction){
+        value = newVal;
+        c = newColor;
+        action = newAction;
+        
+        //get path to card image located in img folder
+        String fileName = "./img/" + value + "_" + c + "_" + action + ".jpg";
+        
+        // load card image and resize
+        cardImg = loadImage(fileName);
+        cardImg.resize(60,90);
+        cardHeight = cardImg.height;
+        cardWidth = cardImg.width;
     }
+    /********************************************************/
     
     public void display(int x, int y){
+       cardX = x;
+       cardY = y;
+       image(cardImg, x, y);
+    }
+    
+    public void display(int x, int y, String choice){
+       if (choice.equals("faceDown")){
+          cardImg = loadImage("./img/99_99_99.jpg");
+          cardImg.resize(70,100);
+          image(cardImg, x, y); 
+       }
        image(cardImg, x, y);
     }
     
@@ -88,54 +91,14 @@ public class Card{
        return action; 
     }
     
-    // will only be used for setting the color of a wild card
-    public void setColor( int newColor ){
-       c = newColor;
+    public boolean isMouseInRange(){
+       if (mouseX > cardX && mouseX <  cardX + _user.space && 
+           mouseY > cardY && mouseY < cardY + cardHeight){
+             return true;
+           }
+       else {
+          return false; 
+       }
+             
     }
-    
-    /**
-      compareTo: Wild < Blue < Green < Red < Yellow 
-    */
-    public int compareTo( Card other){
-        if (this.getC() < other.getC())
-          return -1;
-        else if (this.getC() > other.getC())
-          return 1;
-        else if (this.getC() == other.getC()){
-           if (this.getValue() < other.getValue())
-             return -1;
-           else if (this.getValue() > other.getValue())
-             return 1;
-        }
-        return 0; 
-    }
-    
-    /**
-     * Checks to see if the Card can be played
-     * returns true if the colors or values match, or
-     * if the actions match ( for action cards ).
-     */
-    public boolean isPlayable() {
-      Card card = PlacedPile.get(PlacedPile.size()-1);
-	    if ( card.getC() == c ) {
-	       return true;
-	    }
-	    else if ( card.getValue() == value ) {
-	       return true;
-	    }
-	    else if ( card.getAction() == action && card.getAction() != 0 ) {
-	       return true;
-	    }
-      else if ( card.getAction() == 0 && card.getAction() == WILD || card.getAction() == WILD4){
-         return true; 
-      }
-	    else {
-	      return false;
-	    }
-    }// close playable
-    
-    public String toString(){
-       return "{ " + "value: " + value + ", color: " + c + ", action: " + action + "}" ;
-    }
-    
 }
