@@ -64,19 +64,12 @@ public class Card {
     }
     /********************************************************/
     
-    
-    /********************************************************
-     * displays card at x, y coordinate
-     ********************************************************/
     public void display(int x, int y){
        cardX = x;
        cardY = y;
        image(cardImg, x, y);
     }
     
-    /********************************************************
-     * displays card at x, y coordinate face down
-     ********************************************************/
     public void display(int x, int y, String choice){
        if (choice.equals("faceDown")){
           cardImg = loadImage("./img/99_99_99.jpg");
@@ -98,10 +91,6 @@ public class Card {
        return action; 
     }
     
-    /********************************************************
-     * determines if Mouse is in range of card
-     * allows a specific card to be chosen
-     ********************************************************/
     public boolean isMouseInRange(){
        if (mouseX > cardX && mouseX <  cardX + _user.space && 
            mouseY > cardY && mouseY < cardY + cardHeight){
@@ -112,4 +101,23 @@ public class Card {
        }
              
     }
+    
+   public boolean isPlayable() {
+      Card card = _placePile.peek();
+      if ( card.getC() == c ) {
+         return true;
+      }
+      else if ( card.getValue() == value ) {
+         return true;
+      }
+      else if ( card.getAction() == action && card.getAction() != 0 ) {
+         return true;
+      }
+      else if ( card.getAction() == 0 && card.getAction() == WILD || card.getAction() == WILD4){
+         return true; 
+      }
+      else {
+        return false;
+      }
+    }// close playable
 }

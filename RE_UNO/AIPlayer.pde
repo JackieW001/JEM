@@ -90,10 +90,95 @@ public class AIPlayer extends Player{
         hand.add(_drawPile.removeCard());
       }
     }
+
+//AI Algo 
+   
+   //Checks if the AI has any playable cards to begin with
+   boolean hasPlayable(){
+     ArrayList<Card> temp = hand;
+     for (int x = 0; x < temp.size(); x++){
+        if (temp.get(x).isPlayable())
+          return true;
+     }
+     return false;
+   }
+   
   
-    public void play(){
-    
+/*
+method used as a way for the AI to "ask itself"
+Returns an int that represents a different card being placed.
+0: Places a number
+1: Places a reverse
+2: Places a skip
+3: Places a +2
+4: Places a +4
+5: Places a wild
+6: Draws a card (nothing)
+*/
+   int askItself(){
+      if (hasPlayable()){
+        if (hand.size() == 1){
+            return 7;
+        }
+      }        
+      return 6;
+   }
+   
+   //Helper method
+   public void play(){
+       playH(askItself()); 
+   }
+   
+   //Overwritten playCard() method
+   //plays based on decision made in askItself()
+   void playH(int x){
+       if (x == 6){
+         drawCard();
+       }
+       else if (x == 5){
+         placeCard(5);
+       }
+       else if (x == 4){     
+         placeCard(4);
+       }
+       else if (x == 3){
+         placeCard(3);
+       }
+       else if (x == 2){
+         placeCard(2);
+       }
+       else if (x == 1){
+         placeCard(1);
+       }
+       else placeCard(0);
+   }
+   
+   
+   //Places a card that matches it's action with the param 'a'
+   void placeCard(int a){
+     ArrayList<Card> temp = hand; 
+     
+     if (temp.size() == 1){
+        playCard(temp.get(0));
+        return;
+     }
+     
+     for(int x = 0; x < temp.size(); x++){
+        if (temp.get(x).getAction() == a && playCard(temp.get(x))){
+          return;
+        }     
+     }
+     
+   }
+   
+   public boolean playCard(Card c) {    
+      if (c.isPlayable()){
+         _placePile.add(c);
+         hand.remove(c);
+         return true;
+      }
+      return false;
     }
-    
-    
+   
 }
+    

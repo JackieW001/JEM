@@ -22,6 +22,11 @@ public class PlacePile{
         pile.get(pile.size()-1).display(width/2, height/2 - 55);
       }
    }
+   
+   Card peek(){
+     return pile.get(pile.size()-1);  
+   }
+   
    public void add (Card card){
       pile.add(card); 
    }
