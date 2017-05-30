@@ -5,6 +5,7 @@ public class PlacePile{
    /***************** CONSTRUCTOR *************************/
    PlacePile(){
      pile = new ArrayList<Card>();
+     pile.add(_drawPile.removeCard());
    }
    /********************************************************/
    
@@ -22,12 +23,14 @@ public class PlacePile{
         pile.get(pile.size()-1).display(width/2, height/2 - 55);
       }
    }
-   
-   Card peek(){
-     return pile.get(pile.size()-1);  
-   }
-   
-   public void add (Card card){
+   public void add(Card card){
       pile.add(card); 
    }
+   public int getSize(){
+     return pile.size();
+   }
+   public Card getCard(int i){
+     return pile.get(i);
+   }
+   
 }
