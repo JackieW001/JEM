@@ -101,23 +101,13 @@ public class Card {
        }
              
     }
-    
-   public boolean isPlayable() {
-      Card card = _placePile.peek();
-      if ( card.getC() == c ) {
-         return true;
-      }
-      else if ( card.getValue() == value ) {
-         return true;
-      }
-      else if ( card.getAction() == action && card.getAction() != 0 ) {
-         return true;
-      }
-      else if ( card.getAction() == 0 && card.getAction() == WILD || card.getAction() == WILD4){
-         return true; 
-      }
-      else {
-        return false;
-      }
-    }// close playable
+    public boolean playable(Card card){
+     if (card.getC() == c){
+       return true;
+     }
+     if(card.getValue() == value){
+       return true;
+     }
+     return false;
+   }
 }
