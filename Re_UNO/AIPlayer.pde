@@ -1,80 +1,99 @@
-//AI class
-
 public class AIPlayer extends Player{
-   int difficulty;
-   /*
-   I'm thinking that we should create a tree for the AI, to specifically ask questions based on the scenario.
-   Or even a priorityQueue, with a tree for each of it's objects, priority based on how much cards it has, making the AI
-   even more complex, and more interesting
-   Of course, the priorityqueue would probably not be used for the easier difficulties, but it seems like a fun idea, so
-   I want your opinions on it. (Sorry for not coding it, I want to hear you guys out first).
-   */
-   
-   //Constructor
-   public AIPlayer(){
-       super();
-   }
-   
-   //Checks if the AI has any playable cards to begin with
-   boolean hasPlayable(){
-     ArrayList<Card> temp = hand;
-     for (int x = 0; x < temp.size(); x++){
-        if (temp.get(x).isPlayable())
-          return true;
-     }
-     return false;
-   }
-   
   
-/*
-method used as a way for the AI to "ask itself"
-Returns an int that represents a different card being placed.
-0: Places a number
-1: Places a reverse
-2: Places a skip
-3: Places a +2
-4: Places a +4
-5: Places a wild
-6: Draws a card (nothing)
-*/
-   int askItself(){
-      if (hasPlayable()){
-        if (hand.size() == 1){
-            return 1;
-        }
-      }        
-      return 6;
-   }
+
+  // index determines AI1, AI2, AI3
+  int index;
+  PImage cardImg;
+  
+  /****************** CONSTRUCTOR *******************/
+  AIPlayer(int newIndex, String newName){
+      name = newName;
+      hand = new ArrayList<Card>();
+      index = newIndex;
+      cardImg = loadImage("./img/99_99_99.jpg");
+  }
+  /**************************************************/
+  
+  /*******************************************************
+   * Displays user player's hand with cards face up on the
+   * bottom of the display window
+   ******************************************************/
+  public void displayHand(){
+        // spacing between cards
+        int space = 70; 
+        if (getHandSize() > 10)
+            space = 25;
+        else if (getHandSize() > 8)
+            space = 50;
+            
+        switch (index){
+        case 1: // AI1: on left side
+            // position of top most card
+            int offset = (height/2) - (space*((getHandSize() - 1)/2)) - 30;
+            for (int i = 0; i < hand.size(); i++){
+                
+                // rotate cards
+                pushMatrix();
+                translate(hand.get(i).cardHeight+20, offset);
+                rotate(PI/2);
+                image(cardImg, 0, 0);
+                cardImg.resize(65,100);
+                popMatrix();
+                
+                offset += space; 
+             }
+            break;
+            //end case 1
+         case 2: //AI2 on tope
+            offset = (width/2) - (space*((getHandSize() - 1)/2)) + 30;
+            for (int i = 0; i < hand.size(); i++){
+    
+                // rotate cards
+                pushMatrix();
+                translate(offset, hand.get(i).cardHeight+20);
+                rotate(PI);
+                image(cardImg, 0, 0);
+                cardImg.resize(65,100);
+                popMatrix();
+                
+                offset += space; 
+             }
+             break;
+            //end case 2
+         case 3: //AI3 on right side
+           // position of top most card
+            offset = (height/2) - (space*((getHandSize() - 1)/2)) + 30;
+            for (int i = 0; i < hand.size(); i++){
+                
+                // rotate cards
+                pushMatrix();
+                //hand.get(i).display(width-hand.get(i).cardHeight-20, offset);
+                translate(width-hand.get(i).cardHeight-20, offset);
+                rotate(3*PI/2);
+                image(cardImg, 0, 0);
+                cardImg.resize(65,100);
+                popMatrix();
+                
+                offset += space; 
+             }
+            break;
+            //end case 3
+      }// close switch
+  } 
+  
    
-   //Helper method
-   void play(){
-       playCard(askItself()); 
-   }
-   
-   //plays based on decision made in askItself()
-   void playCard(int x){
-       if (x == 6){
-         //drawCard(DrawPile.remove());
-         return;
-       }
-       else if (x == 5){
-         
-       }
-       else if (x == 4){
-         
-       }
-       else if (x == 3){
-         
-       }
-       else if (x == 2){
-         
-       }
-       else if (x == 1){
-         
-       }
-       else if (x == 0){
-         
-       }
-   }
-   
+   /*****************************************************
+    * Add a card to the player's hand
+    ******************************************************/
+    public void drawCard() {
+      if ( hand.size() < 21){
+        hand.add(_drawPile.removeCard());
+      }
+    }
+  
+    public void play(){
+    
+    }
+    
+    
 }
