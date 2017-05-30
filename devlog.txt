@@ -79,7 +79,7 @@ Mid-Development Design Changes:
 
 ### 05-26-17
 + Jackie: Worked on displaying UserPlayer and AI player hands
-+
++ Edward: worked on AIPlayer
 +
 
 ### 05-27-17
@@ -94,6 +94,6 @@ Mid-Development Design Changes:
 
 ### 05-29-17
 + Jackie: Worked on creating circlar DLL nodes to connect players
-+
++ Jackie: MADE AN AMAZING INTERFACE OMG
 +
 
