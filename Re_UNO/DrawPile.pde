@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 
-public class Deck{
-
-   ArrayList <Card> deck;
-   
-   public Deck(){public class DrawPile{
+public class DrawPile{
   
    ArrayList<Card> pile;
    PImage cardImg;
