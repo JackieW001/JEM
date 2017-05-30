@@ -28,6 +28,7 @@ public void mouseClicked(){
   for (int i = 0; i < _user.hand.size(); i++){
     if(_user.hand.get(i).isMouseInRange()){
        Card chosenCard = _user.hand.remove(i);
+       if (_placePile.getCard(_placePile.getSize()-1).playable(chosenCard))
        _placePile.add(chosenCard);
      }
    }
@@ -36,6 +37,8 @@ public void mouseClicked(){
    }
    if (_drawPile.isInRange())
       _user.drawCard();
+      
+   
 }
    
 
