@@ -19,7 +19,7 @@ public class UserPlayer extends Player{
      * bottom of the display window
      ******************************************************/
    public void displayHand(){
-     
+     sort();
      // spacing between cards
       space = 70; //= (width-200)/getHandSize();
       if (getHandSize() > 10)
@@ -94,6 +94,47 @@ public class UserPlayer extends Player{
          return false;
        }
     }
+    
+    /*****************************************************
+     * Autosort player hand using heapsort
+     ******************************************************/
+    public void sort(){
+      for (int x = hand.size() / 2 -1 ; x >= 0; x--){
+         heapify(hand.size(), x); 
+      }
+      
+      for (int x = hand.size() - 1; x >= 0; x--){
+         Card temp = hand.get(0);
+         hand.set(0, hand.get(x));
+         hand.set(x, temp);
+         
+         heapify( x, 0);
+      }
+    }
+    
+    /*****************************************************
+     * Helper function for sort
+     ******************************************************/
+    private void heapify(int a, int b){
+      int largest = b;
+      int l = 2 * b + 1;  //left
+      int r = 2 * b + 2;  //right
+      
+      if (l < a && hand.get(l).compareTo(hand.get(largest)) > 0){
+        largest = l;
+      }
+      if (r < a && hand.get(r).compareTo(hand.get(largest)) > 0){
+         largest = r; 
+      }
+      if (largest != b){
+         Card swap = hand.get(b);
+         hand.set(b, hand.get(largest));
+         hand.set(largest, swap);
+         
+         heapify(a, largest);
+      }
+    }
+    
     
     //Loop for the player
     public void play() {
