@@ -23,13 +23,7 @@ public abstract class Player{
    public void setNext(Player newNext) { next = newNext; }
    /********************************************************/
    
-   public void endTurn(){
-      if (group.isClockwise)
-        group.currentPlayer = group.currentPlayer.getNext(); 
-      else
-        group.currentPlayer = group.currentPlayer.getPrev();
-    }
-    
+   public abstract void endTurn();    
    public abstract void displayHand();
    public abstract void drawCard();
    public abstract void play();

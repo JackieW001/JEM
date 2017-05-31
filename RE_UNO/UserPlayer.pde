@@ -54,12 +54,31 @@ public class UserPlayer extends Player{
     }
     
     public void displayEndTurnButton(){
+      if(group.currentPlayer.name.equals("You")){
       fill(#6FCFEA);
       stroke(#2A819B);
       rect(width/2-100,height/2+90,200,90,45);
       textSize(32);
       fill(255);
       text("End Turn", width/2-75,height/2+150); 
+      }
+    }
+    
+    public void hideEndButton(){
+      fill(0);
+      stroke(0);
+      rect(width/2-100,height/2+90,200,90.45);
+      fill(0);
+    }
+    
+    public void endTurn(){
+      if (group.isClockwise)
+        group.currentPlayer = group.currentPlayer.getNext(); 
+      else
+        group.currentPlayer = group.currentPlayer.getPrev();
+      
+      hideEndButton();
+        
     }
     
     public boolean isInRangeOfEndButton(){

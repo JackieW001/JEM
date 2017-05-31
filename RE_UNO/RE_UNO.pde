@@ -30,6 +30,10 @@ public void mouseClicked(){
        Card chosenCard = _user.hand.remove(i);
        if (_placePile.getCard(_placePile.getSize()-1).playable(chosenCard))
        _placePile.add(chosenCard);
+       else { 
+         /* DISPLAY SOME KIND OF ERROR MESSAGE */
+       _user.hand.add(i, chosenCard); 
+       }
      }
    }
    if(_user.isInRangeOfEndButton()){

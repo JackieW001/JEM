@@ -97,7 +97,7 @@ public class AIPlayer extends Player{
    boolean hasPlayable(){
      ArrayList<Card> temp = hand;
      for (int x = 0; x < temp.size(); x++){
-        if (temp.get(x).isPlayable())
+        if (temp.get(x).playable(_placePile.getCard(_placePile.getSize()-1)))
           return true;
      }
      return false;
@@ -172,12 +172,20 @@ Returns an int that represents a different card being placed.
    }
    
    public boolean playCard(Card c) {    
-      if (c.isPlayable()){
+      if (_placePile.getCard(_placePile.getSize()-1).playable(c)){
          _placePile.add(c);
          hand.remove(c);
          return true;
       }
       return false;
+    }
+    
+    public void endTurn(){
+      if (group.isClockwise)
+        group.currentPlayer = group.currentPlayer.getNext(); 
+      else
+        group.currentPlayer = group.currentPlayer.getPrev();
+        
     }
    
 }
