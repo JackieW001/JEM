@@ -105,7 +105,15 @@ public class Card {
      if (card.getC() == c){
        return true;
      }
-     if(card.getValue() == value){
+     if (card.getValue() == value){
+       return true;
+     }
+     if (card.getAction() != 0 && 
+         action != 0 &&
+         card.getAction() == action){
+       return true;
+     }
+     if (card.getC() == 0 || c == 0){//wild cards
        return true;
      }
      return false;
