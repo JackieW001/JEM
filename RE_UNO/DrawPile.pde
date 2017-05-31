@@ -63,8 +63,8 @@ public class DrawPile{
       
       //Adds the wild and wild4 action cards
       for (int w = 0; w < 4; w++){ //Adds four of each
-         pile.add(new Card(99, 0, 4)); //Adds the wild
-         pile.add(new Card(99, 0, 5)); //Adds the wild+4 
+         pile.add(new Card(99, 99, 4)); //Adds the wild
+         pile.add(new Card(99, 99, 5)); //Adds the wild+4 
       } 
    }
    

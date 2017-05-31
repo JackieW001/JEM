@@ -101,6 +101,7 @@ public class Card {
        }
              
     }
+    
     public boolean playable(Card card){
      if (card.getC() == c){
        return true;
@@ -118,4 +119,35 @@ public class Card {
      }
      return false;
    }
+   
+   public int compareTo( Card other){
+       if (this.getValue() < other.getValue()){
+          return -1; 
+       }
+       if (this.getValue() > other.getValue()){
+          return 1; 
+       }
+       if (this.getValue() == other.getValue()){
+           if (this.getC() < other.getC()){
+              return -1; 
+           }
+           if (this.getC() > other.getC()){
+              return 1;
+           }
+           if (this.getC() == other.getC()){
+              if (this.getAction() < other.getAction()){
+                 return -1; 
+              }
+              if (this.getAction() > other.getAction()){
+                 return 1; 
+              }
+              if (this.getAction() == other.getAction()){
+                return 0;
+              }
+           }
+       }
+       return 0;
+   } // compareTo
+   
+   
 }
