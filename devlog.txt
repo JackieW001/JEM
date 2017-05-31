@@ -9,12 +9,12 @@ Jackie Woo, Edward Ro, Maggie Xia
 Obstacles Overcome:
 * Disagreement over project idea. We compromised and 
   were able to peacefully make a decision!
+* Interface is finally made (rough draft)!
+* AI is more easily conceptualized, decision-making skills
+  are soon to be possible!
 
 Unresolved Issues:
-* We need to work on the concepts for AIPlayer and UserPlayer. Does
-  UserPlayer need anything new from the Player superclass?
-  How to create an AI for the game (Maybe look at one of our
-  old projects in CS?).
+* AI and UserPlayer merging with the interface
 
 Cool Stuff Learned:
 * For loops can make instantiating variables unnecessary, but
