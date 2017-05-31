@@ -1,5 +1,10 @@
 public class AIPlayer extends Player{
-  
+  //TODO: (Edward)
+  /*
+  Finish working on AI decision-making skills
+  and conceptualizations.
+  Make flowcharts and visuals for concepts.
+  */
 
   // index determines AI1, AI2, AI3
   int index;
@@ -171,6 +176,7 @@ Returns an int that represents a different card being placed.
      
    }
    
+   //Plays the card
    public boolean playCard(Card c) {    
       if (_placePile.getCard(_placePile.getSize()-1).playable(c)){
          _placePile.add(c);
@@ -180,6 +186,7 @@ Returns an int that represents a different card being placed.
       return false;
     }
     
+    //Ends turn
     public void endTurn(){
       if (group.isClockwise)
         group.currentPlayer = group.currentPlayer.getNext(); 

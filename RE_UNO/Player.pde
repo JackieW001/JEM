@@ -1,3 +1,4 @@
+//Superclass, no real methods, only variables and accessors/mutators, along with mandatory methods
 public abstract class Player{
   
    ArrayList<Card> hand; // max 20 cards 

@@ -1,6 +1,7 @@
 public class DrawPile{
   
-   ArrayList<Card> pile;
+  //Variables
+   ArrayList<Card> pile; 
    PImage cardImg;
    int cardImgHeight, cardImgWidth;
    

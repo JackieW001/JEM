@@ -1,5 +1,5 @@
 public class UserPlayer extends Player{
-   
+   //New variable
    int space;
    
    /***************** CONSTRUCTOR *************************/
@@ -53,6 +53,7 @@ public class UserPlayer extends Player{
       }
     }
     
+    //Displays the endTurn Button on the interface
     public void displayEndTurnButton(){
       if(group.currentPlayer.name.equals("You")){
       fill(#6FCFEA);
@@ -64,6 +65,7 @@ public class UserPlayer extends Player{
       }
     }
     
+    //Hides it while it's not the player's turn
     public void hideEndButton(){
       fill(0);
       stroke(0);
@@ -71,6 +73,7 @@ public class UserPlayer extends Player{
       fill(0);
     }
     
+    //Ends turn if the end button is pressed
     public void endTurn(){
       if (group.isClockwise)
         group.currentPlayer = group.currentPlayer.getNext(); 
@@ -81,6 +84,7 @@ public class UserPlayer extends Player{
         
     }
     
+    //Checks if the mouse is in range
     public boolean isInRangeOfEndButton(){
       if (mouseX > width/2-100 && mouseX < width/2 + 100 &&
           mouseY > height/2 && mouseY < height/2 + 180){
@@ -91,6 +95,7 @@ public class UserPlayer extends Player{
        }
     }
     
+    //Loop for the player
     public void play() {
        displayChosenCard();
        displayEndTurnButton();

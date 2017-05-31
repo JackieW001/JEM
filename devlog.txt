@@ -80,20 +80,21 @@ Mid-Development Design Changes:
 ### 05-26-17
 + Jackie: Worked on displaying UserPlayer and AI player hands
 + Edward: worked on AIPlayer
-+
 
 ### 05-27-17
 + Jackie: Worked on allowing user player to draw cards and place cards in respective piles
-+
-+
 
 ### 05-28-17
 + Jackie: Worked on allowing user player to draw cards and place cards in respective piles
-+
-+
 
 ### 05-29-17
 + Jackie: Worked on creating circlar DLL nodes to connect players
-+ Jackie: MADE AN AMAZING INTERFACE OMG
-+
++ Jackie: MADE AN AMAZING INTERFACE OMG 
++ Edward: Worked on AIPlayer, added methods to Deck and Player
++ Edward: Updated devlog.txt
+
+### 5-30-17
++ Jackie: Continued updating beautismo interface
++ Edward: Worked on merging and intergrating interface with AI
++ Edward: Updated devlog.txt
 

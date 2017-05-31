@@ -1,8 +1,13 @@
+//Variables
+
 DrawPile _drawPile;
 PlacePile _placePile;
 UserPlayer _user;
 AIPlayer AI1,AI2,AI3;
 Group group;
+
+
+//Setups the interface
 
 public void setup(){
     size(1000,700);
@@ -24,6 +29,7 @@ public void setup(){
     }
 }
 
+//Based on what the mouse clicked on, does a certain action
 public void mouseClicked(){
   for (int i = 0; i < _user.hand.size(); i++){
     if(_user.hand.get(i).isMouseInRange()){
@@ -45,7 +51,7 @@ public void mouseClicked(){
    
 }
    
-
+//Loop
 public void draw(){
     delay(100);
     

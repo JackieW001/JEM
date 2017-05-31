@@ -1,5 +1,6 @@
 public class Group{
    
+  //Variables
    Player currentPlayer;
    boolean isClockwise;
    
@@ -8,6 +9,7 @@ public class Group{
       isClockwise = true;
    }
    
+   //Setup the table and order
    public void setRoundRobin(){
       AI1.setNext(AI2); 
       AI1.setPrev(_user);
@@ -25,6 +27,7 @@ public class Group{
       
    }
    
+   //Passes to the next player
    public void pass(){
       if (keyPressed){
         if (key == 'p') // goes on to next player
@@ -35,6 +38,7 @@ public class Group{
       }
       
    }
+   //play method as a loop
    public void play(){
        while (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0){
           this.currentPlayer.play();
