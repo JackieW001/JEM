@@ -123,8 +123,21 @@ Returns an int that represents a different card being placed.
    int askItself(){
       if (hasPlayable()){
         if (hand.size() == 1){
-            return 7;
+            return 5; //Using 5, since it'll automatically attempt to lose whatever card it has in it's hand anyways
         }
+        else if (_placePile.getCard(_placePile.getSize()-1).getAction() == 3 && hasPlayable(3)){ //Checks if the top is +2
+            return 3;
+        }
+        else if (_placePile.getCard(_placePile.getSize()-1).getAction() == 4 && hasPlayable(4)){
+           return 4; 
+        }
+        else if (hasPlayable(2)){
+            return 2;
+        }
+        else if (hasPlayable(1)){
+           return 1; 
+        }
+        else return 0;
       }        
       return 6;
    }
@@ -158,14 +171,13 @@ Returns an int that represents a different card being placed.
        else placeCard(0);
    }
    
-   
    //Places a card that matches it's action with the param 'a'
    void placeCard(int a){
      ArrayList<Card> temp = hand; 
      
      if (temp.size() == 1){
         playCard(temp.get(0));
-        return;
+        return;      
      }
      
      for(int x = 0; x < temp.size(); x++){
@@ -173,7 +185,6 @@ Returns an int that represents a different card being placed.
           return;
         }     
      }
-     
    }
    
    //Plays the card
@@ -182,6 +193,18 @@ Returns an int that represents a different card being placed.
          _placePile.add(c);
          hand.remove(c);
          return true;
+      }
+      return false;
+    }
+    
+    //Mainly for checking if it has skip or reverse cards that ARE playable
+    public boolean hasPlayable(int a){
+      for (int x = 0; x < _placePile.getSize()-1; x++){
+          if (hand.get(x).getAction() == a){
+             if (hand.get(x).playable(_placePile.getCard(_placePile.getSize()))){
+                return true; 
+             }
+          }
       }
       return false;
     }
