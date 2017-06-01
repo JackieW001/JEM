@@ -200,10 +200,16 @@ Returns an int that represents a different card being placed.
     
     //Mainly for checking if it has skip or reverse cards that ARE playable
     public boolean hasPlayable(int a){
+<<<<<<< HEAD
       for (int x = 0; x < hand.size()-1; x++){
         System.out.println(x);
           if (hand.get(x).getAction() == a){  
              if (hand.get(x).playable(_placePile.getCard(_placePile.getSize()-1))){ //checks if card is playable
+=======
+      for (int x = 0; x < hand.size(); x++){
+          if (hand.get(x).getAction() == a){
+             if (hand.get(x).playable(_placePile.getCard(_placePile.getSize()))){
+>>>>>>> 4f61dd615b6af0ea0cd27ca51cf3a1b29a918c8d
                 return true; 
              }
           }

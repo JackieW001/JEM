@@ -67,10 +67,10 @@ public class UserPlayer extends Player{
     
     //Hides it while it's not the player's turn
     public void hideEndButton(){
-      fill(0);
-      stroke(0);
+      fill(#62B475);
+      noStroke();
       rect(width/2-100,height/2+90,200,90.45);
-      fill(0);
+      fill(#62B475);
     }
     
     //Ends turn if the end button is pressed
