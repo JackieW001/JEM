@@ -98,3 +98,8 @@ Mid-Development Design Changes:
 + Edward: Worked on merging and intergrating interface with AI
 + Edward: Updated devlog.txt
 
+### 5-30-17
++ Jackie: Added uml.pdf and flow.pdf
++ Jackie: Added autosort to user player's hand
++
+
