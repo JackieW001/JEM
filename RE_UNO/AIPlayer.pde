@@ -125,10 +125,10 @@ Returns an int that represents a different card being placed.
         if (hand.size() == 1){
             return 5; //Using 5, since it'll automatically attempt to lose whatever card it has in it's hand anyways
         }
-        else if (_placePile.getCard(_placePile.getSize()-1).getAction() == 3 && hasPlayable(3)){ //Checks if the top is +2
+        else if (hasPlayable(3)){ //Checks if the top is +2
             return 3;
         }
-        else if (_placePile.getCard(_placePile.getSize()-1).getAction() == 4 && hasPlayable(4)){
+        else if (hasPlayable(4)){
            return 4; 
         }
         else if (hasPlayable(2)){
@@ -199,7 +199,7 @@ Returns an int that represents a different card being placed.
     
     //Mainly for checking if it has skip or reverse cards that ARE playable
     public boolean hasPlayable(int a){
-      for (int x = 0; x < _placePile.getSize()-1; x++){
+      for (int x = 0; x < hand.size(); x++){
           if (hand.get(x).getAction() == a){
              if (hand.get(x).playable(_placePile.getCard(_placePile.getSize()))){
                 return true; 

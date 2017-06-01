@@ -31,30 +31,30 @@ public void setup(){
 
 //Based on what the mouse clicked on, does a certain action
 public void mouseClicked(){
-  for (int i = 0; i < _user.hand.size(); i++){
-    if(_user.hand.get(i).isMouseInRange()){
-       Card chosenCard = _user.hand.remove(i);
-       if (_placePile.getCard(_placePile.getSize()-1).playable(chosenCard))
-       _placePile.add(chosenCard);
-       else { 
-         /* DISPLAY SOME KIND OF ERROR MESSAGE */
-       _user.hand.add(i, chosenCard); 
+  if (group.currentPlayer.equals(_user)){
+    for (int i = 0; i < _user.hand.size(); i++){
+      if(_user.hand.get(i).isMouseInRange()){
+         Card chosenCard = _user.hand.remove(i);
+         if (_placePile.getCard(_placePile.getSize()-1).playable(chosenCard))
+         _placePile.add(chosenCard);
+         else { 
+           /* DISPLAY SOME KIND OF ERROR MESSAGE */
+         _user.hand.add(i, chosenCard); 
+         }
        }
      }
-   }
-   if(_user.isInRangeOfEndButton()){
-       _user.endTurn();
-   }
-   if (_drawPile.isInRange())
-      _user.drawCard();
-      
+     if(_user.isInRangeOfEndButton()){
+         _user.endTurn();
+     }
+     if (_drawPile.isInRange())
+        _user.drawCard();
+       
+  }
    
 }
    
 //Loop
 public void draw(){
-    delay(100);
-    
     background(#62B475);
     _user.displayHand();
     _drawPile.displayPile();
@@ -70,7 +70,7 @@ public void draw(){
       text("true", 60,60);
     else
        text("false", 60,60);
-    _user.play();
-    
-    group.pass();
+    //_user.play();
+    group.play();
+    //group.pass();
 }
