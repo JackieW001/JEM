@@ -70,7 +70,5 @@ public void draw(){
       text("true", 60,60);
     else
        text("false", 60,60);
-    _user.play();
-    
-    group.pass();
+    group.play();
 }
