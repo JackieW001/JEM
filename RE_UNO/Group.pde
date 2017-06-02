@@ -40,8 +40,12 @@ public class Group{
    }
    //play method as a loop
    public void play(){
-       while (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0){
-               this.currentPlayer.play();
+       if (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0){
+          this.currentPlayer.play();
+           if (currentPlayer.equals(_user)){
+              _user.displayEndTurnButton();
+           }
+           _user.hideEndButton();
        }
    }
 }

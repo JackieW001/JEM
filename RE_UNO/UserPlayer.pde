@@ -1,6 +1,8 @@
 public class UserPlayer extends Player{
    //New variable
    int space;
+   // used to allow to place combos
+   int numOfCardsPlaced;
    
    /***************** CONSTRUCTOR *************************/
    UserPlayer(){
@@ -79,9 +81,7 @@ public class UserPlayer extends Player{
         group.currentPlayer = group.currentPlayer.getNext(); 
       else
         group.currentPlayer = group.currentPlayer.getPrev();
-      
-      hideEndButton();
-        
+      hideEndButton();   
     }
     
     //Checks if the mouse is in range

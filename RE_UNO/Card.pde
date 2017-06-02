@@ -120,6 +120,13 @@ public class Card {
      return false;
    }
    
+   public boolean playableInCombo(Card card){
+       if (card.getValue() == value){
+          return true; 
+       }
+       return false;
+   }
+   
    public int compareTo( Card other){
        if (this.getValue() < other.getValue()){
           return -1; 
