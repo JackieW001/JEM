@@ -111,4 +111,4 @@ Mid-Development Design Changes:
 + All members: worked on debugging
 + Jackie: added rules, fixed unknown file error
 + Edward: in the process of figuring out why AIPlayer doesn't work
-+ Maggie: updated devlog.txt, updates to UML and flowchart
++ Maggie: updated devlog.txt, updates to UML, flowchart, and plan
