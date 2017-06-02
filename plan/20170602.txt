@@ -1,0 +1,34 @@
+# JEM Plan
+
+Priorities:
+	
+  1. Intergrating/Merging
+	- Put both AI and Interface together
+
+  2. Work on playability
+	- Work on action cards/effects
+	- User-friendly gameplay
+	- Work on AI's decision-making
+	- Final touches to the code
+	- Increase efficiency
+
+  3. Extra Pizzazz
+	- Prettier graphics
+	- AI difficulties
+
+Workload Sharing
+  1. Jackie
+  2. Maggie
+  3. Edward
+
+Goals:
+Work on current classes that we have so far, while implementing algorithms that we learned over the APCS2 course.
+Make any new classes if necessary.
+
+Timeline (Planned)
+June 1 - Code AI
+June 2 - Code AI & Code Play
+June 3 - Add interface
+June 4 - Add Pizzazz/ think of more pizazz to add
+June 5 - Add Pizzazz
+June 6 - Project Due
