@@ -68,38 +68,47 @@ Mid-Development Design Changes:
 + Maggie: finished up proposal.doc and uploaded proposal.pdf
 
 ### 05-24-17
-+ All Members: Worked on debugging issues
-+ Jackie: Debugged main problems
++ All Members: worked on debugging issues
++ Jackie: debugged main problems
 
 ### 05-25-17
-+ Edward: Worked on AIPlayer and Deck classes, edited Player (Continued conceptualizing), added comments
-+ Jackie: Worked on AI and Deck classes
-+ Maggie: Worked on Player class
-+ Edward: Updated devlog.txt
++ Edward: worked on AIPlayer and Deck classes, edited Player (Continued conceptualizing), added comments
++ Jackie: worked on AI and Deck classes
++ Maggie: worked on Player class
++ Edward: updated devlog.txt
 
 ### 05-26-17
-+ Jackie: Worked on displaying UserPlayer and AI player hands
++ Jackie: worked on displaying UserPlayer and AI player hands
 + Edward: worked on AIPlayer
 
 ### 05-27-17
-+ Jackie: Worked on allowing user player to draw cards and place cards in respective piles
++ Jackie: worked on allowing user player to draw cards and place cards in respective piles
 
 ### 05-28-17
-+ Jackie: Worked on allowing user player to draw cards and place cards in respective piles
++ Jackie: worked on allowing user player to draw cards and place cards in respective piles
++ Maggie: make endTurnButton disappear after being clicked
++ Edward: worked on the smarts for AIPlayer
 
 ### 05-29-17
-+ Jackie: Worked on creating circlar DLL nodes to connect players
++ Jackie: worked on creating circlar DLL nodes to connect players
 + Jackie: MADE AN AMAZING INTERFACE OMG 
-+ Edward: Worked on AIPlayer, added methods to Deck and Player
-+ Edward: Updated devlog.txt
++ Edward: worked on AIPlayer, added methods to Deck and Player
++ Edward: updated devlog.txt
++ Maggie: mousePressed --> mouseClicked()
 
 ### 5-30-17
-+ Jackie: Continued updating beautismo interface
-+ Edward: Worked on merging and intergrating interface with AI
-+ Edward: Updated devlog.txt
++ Jackie: continued updating beautismo interface
++ Edward: worked on merging and intergrating interface with AI
++ Edward: updated devlog.txt
++ Maggie: minor changes to playable()
 
-### 5-30-17
-+ Jackie: Added uml.pdf and flow.pdf
-+ Jackie: Added autosort to user player's hand
-+
+### 5-31-17
++ Jackie: added uml.pdf and flow.pdf, updated devlog.txt
++ Jackie: added autosort to user player's hand
++ Edward: worked on AI algo
 
+### 6-01-17
++ All members: worked on debugging
++ Jackie: added rules, fixed unknown file error
++ Edward: in the process of figuring out why AIPlayer doesn't work
++ Maggie: updated devlog.txt, updates to UML and flowchart
