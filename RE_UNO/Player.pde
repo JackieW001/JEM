@@ -24,7 +24,35 @@ public abstract class Player{
    public void setNext(Player newNext) { next = newNext; }
    /********************************************************/
    
-  public void endTurn(){
+   public void receiveAction(Card card){
+     if (card.getAction() == 5){//wild4
+       drawCard();
+       drawCard();
+       drawCard();
+       drawCard();
+       return;
+     }
+     if (card.getAction() == 4){//wild
+       return;
+     }
+     if (card.getAction() == 3){//+2
+       drawCard();
+       drawCard();
+       return;
+     }
+     if (card.getAction() == 2){//skip
+       group.currentPlayer.endTurn();
+       return;
+     }
+     if (card.getAction() == 1){//reverse
+       group.isClockwise = !group.isClockwise;
+     }
+     else {
+       return;
+     }
+   }
+   
+   public void endTurn(){
     if (group.isClockwise)
       group.currentPlayer = group.currentPlayer.getNext(); 
     else

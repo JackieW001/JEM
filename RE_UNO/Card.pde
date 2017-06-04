@@ -22,7 +22,7 @@ public class Card {
     
     /*********************** 
        value between -1-3
-       0: no color
+       99: no color (wild)
        1: red
        2: yellow
        3: green
@@ -32,7 +32,7 @@ public class Card {
     
     /*********************** 
        value between 0-5
-       0: none (ie is a numerical card)
+       99: none (ie is a numerical card)
        1: reverse
        2: skip
        3: +2 (draw 2)

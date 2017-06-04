@@ -135,6 +135,7 @@ public class UserPlayer extends Player{
     public void play() {
        displayChosenCard();
        displayEndTurnButton();
+       receiveAction(_placePile.getCard(_placePile.size()-1));
     }
     
     
