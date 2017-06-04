@@ -21,10 +21,17 @@ public class DrawPile{
    * Displays DrawPile
    ********************************************************/
    public void displayPile(){
-       image(cardImg, 300, height/2 - cardImgHeight/2);
+       if (pile.size() > 0 ) {image(cardImg, 300, height/2 - cardImgHeight/2);}
+       else { 
+         fill(#62B475);
+         strokeWeight(4);
+         stroke(255, 150);
+         rect( width/2, height/2 - 55, 70, 105,7);
+       }
    }
+   
    /*****************************************************
-    * Add a card to the player's hand
+    * Add a card to the draw pile
     ******************************************************/
    private void populatePile(){
        pile = new ArrayList<Card>();
@@ -69,8 +76,8 @@ public class DrawPile{
    }
    
    /*****************************************************
-     * Shuffles deck
-     ******************************************************/
+   * Shuffles deck
+   ******************************************************/
    private void shuffle(){
       for ( int i = 0; i < pile.size(); i++ ) {
         int rand = (int)( Math.random()*( i + 1 ) );
@@ -81,12 +88,15 @@ public class DrawPile{
    }
    
    /*****************************************************
-     * Removes last card in pile (like a stack)
-     ******************************************************/
+   * Removes last card in pile (like a stack)
+   ******************************************************/
    public Card removeCard(){
       return pile.remove(pile.size()-1);
    }
    
+   /*****************************************************
+   * Checks to see if mouse is in range of draw pile
+   ******************************************************/
    public boolean isInRange(){
        if ( mouseX > 300 && mouseX < 300 + cardImgWidth &&
             mouseY > height/2 - cardImgHeight/2 && mouseY < height/2 - cardImgHeight/2 + cardImgHeight){

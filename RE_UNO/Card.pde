@@ -91,6 +91,9 @@ public class Card {
        return action; 
     }
     
+    /*****************************************************
+    * Checks to see if mouse is in range of card
+    ******************************************************/
     public boolean isMouseInRange(){
        if (mouseX > cardX && mouseX <  cardX + _user.space && 
            mouseY > cardY && mouseY < cardY + cardHeight){
@@ -103,23 +106,30 @@ public class Card {
     }
     
     public boolean playable(Card card){
+     // match color
      if (card.getC() == c){
+       System.out.println("playable color");
        return true;
      }
+     // match value
      if (card.getValue() == value){
+       System.out.println("playable value");
        return true;
      }
-     if (card.getAction() != 0 && 
-         action != 0 &&
-         card.getAction() == action){
-       return true;
+     // match action
+     if (card.getAction() != 99 && action != 99 && card.getAction() == action){
+         System.out.println("playable action"); 
+         return true;
      }
-     if (card.getC() == 0 || c == 0){//wild cards
+     // place wild card anytime
+     if (card.getC() == 99 || c == 99){//wild cards
+       System.out.println("playable wild");
        return true;
      }
      return false;
    }
    
+
    public boolean playableInCombo(Card card){
        if (card.getValue() == value){
           return true; 

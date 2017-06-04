@@ -41,11 +41,18 @@ public class Group{
    //play method as a loop
    public void play(){
        if (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0){
-          this.currentPlayer.play();
-           if (currentPlayer.equals(_user)){
-              _user.displayEndTurnButton();
+           if (!currentPlayer.equals(_user)){
+              delay(800); 
            }
-           _user.hideEndButton();
+           this.currentPlayer.play();
+          
+          // endTurn button
+           if (currentPlayer.equals(_user)){ _user.displayEndTurnButton(); }
+           else { _user.hideEndButton(); } 
        }
+       textSize(32);
+       fill(0);
+       if (_user.getHandSize() == 0 ){ text("YOU WON!!", width/2-20 ,height/2+100);}
+       else if ( AI1.getHandSize() == 0 || AI2.getHandSize() == 0 || AI3.getHandSize() == 0 ){ text("YOU LOST!!", width/2-20 ,height/2+100); }
    }
 }

@@ -50,7 +50,7 @@ public class UserPlayer extends Player{
      * Add a card to the player's hand
      ******************************************************/
     public void drawCard() {
-      if ( hand.size() < 21){
+      if ( hand.size() < 26){
         hand.add(_drawPile.removeCard());
       }
     }
@@ -71,18 +71,10 @@ public class UserPlayer extends Player{
     public void hideEndButton(){
       fill(#62B475);
       noStroke();
-      rect(width/2-100,height/2+90,200,90.45);
+      rect(width/2-100,height/2+90,201,91);
       fill(#62B475);
     }
     
-    //Ends turn if the end button is pressed
-    public void endTurn(){
-      if (group.isClockwise)
-        group.currentPlayer = group.currentPlayer.getNext(); 
-      else
-        group.currentPlayer = group.currentPlayer.getPrev();
-      hideEndButton();   
-    }
     
     //Checks if the mouse is in range
     public boolean isInRangeOfEndButton(){
@@ -135,7 +127,10 @@ public class UserPlayer extends Player{
       }
     }
     
-    
+    public void endTurn(){
+       super.endTurn();
+       hideEndButton();
+    }
     //Loop for the player
     public void play() {
        displayChosenCard();

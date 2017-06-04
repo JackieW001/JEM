@@ -86,18 +86,24 @@ public class AIPlayer extends Player{
     * Add a card to the player's hand
     ******************************************************/
     public void drawCard() {
-      if ( hand.size() < 21){
+      if ( hand.size() < 26){
         hand.add(_drawPile.removeCard());
       }
     }
   
+    /*****************************************************
+    * To be changed with real AI (Ed and Maggie)
+    ******************************************************/
     public void play(){
-    
+      for ( int i = 0; i < hand.size()-1; i++ ){
+         if ( hand.get(i).playable(_placePile.peek()) ){
+             _placePile.add(hand.remove(i));
+         }
+         else { this.drawCard(); break;}
+      }
+      super.endTurn();
     }
-    
-    public void endTurn(){
-      
-    }
+
     
     
 }

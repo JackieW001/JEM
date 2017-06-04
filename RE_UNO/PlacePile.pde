@@ -26,8 +26,11 @@ public class PlacePile{
    public void add(Card card){
       pile.add(card); 
    }
-   public int getSize(){
+   public int size(){
      return pile.size();
+   }
+   public Card peek(){
+     return pile.get(pile.size()-1); 
    }
    public Card getCard(int i){
      return pile.get(i);

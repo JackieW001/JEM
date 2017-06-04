@@ -1,3 +1,4 @@
+// COPY OF RE UNO
 //Variables
 
 DrawPile _drawPile;
@@ -20,6 +21,7 @@ public void setup(){
     group = new Group();
     group.setRoundRobin();
     
+
     // init player hand
     for (int i = 0; i < 8; i++){
        _user.drawCard();
@@ -35,14 +37,12 @@ public void mouseClicked(){
     for (int i = 0; i < _user.hand.size(); i++){
       if(_user.hand.get(i).isMouseInRange()){
          Card chosenCard = _user.hand.remove(i);
-         if ( _user.numOfCardsPlaced >= 1 && _placePile.getCard(_placePile.getSize()-1).playableInCombo(chosenCard)){
+         if ( _user.numOfCardsPlaced >= 1 && _placePile.peek().playableInCombo(chosenCard)){
            _placePile.add(chosenCard);
-           System.out.println("in combo");
            _user.numOfCardsPlaced++;
          }
-         else if ( _user.numOfCardsPlaced == 0 && _placePile.getCard(_placePile.getSize()-1).playable(chosenCard)){
+         else if ( _user.numOfCardsPlaced == 0 && _placePile.peek().playable(chosenCard)){
            _placePile.add(chosenCard); 
-           System.out.println("in playable");
            _user.numOfCardsPlaced++;
          }
          else { 
@@ -79,7 +79,8 @@ public void draw(){
       text("true", 60,60);
     else
        text("false", 60,60);
-    _user.play();
-    //group.play();
+    //_user.play();
+    
+    group.play();
     group.pass();
 }
