@@ -172,5 +172,13 @@ public class Card {
        return 0;
    } // compareTo
    
+   public boolean isStarter(){
+     if (this.getAction() == 99){
+       return true;
+     }
+     else {
+       return false;
+     }
+   }
    
 }
