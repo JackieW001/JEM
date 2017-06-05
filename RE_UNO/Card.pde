@@ -64,6 +64,31 @@ public class Card {
     }
     /********************************************************/
     
+    public String toString(){
+      int colour = getC();
+      int value = getValue();
+      
+      String colorValue = "";
+      String cardValue = "";
+      if (colour == 1){
+        colorValue = "Red";
+      }else if (colour == 2){
+        colorValue = "Yellow";
+      }else if (colour == 3){
+        colorValue = "Green";
+      }else if (colour == 4){
+        colorValue = "Blue";
+      }else{
+        colorValue = "Wild";
+      }
+      if (value == 99){
+        cardValue = "Action";
+      }else{
+        cardValue = "" + value;
+      }
+      return colorValue + " " + cardValue;
+    }
+    
     public void display(int x, int y){
        cardX = x;
        cardY = y;
@@ -112,21 +137,30 @@ public class Card {
     }
     
     public boolean playable(Card card){
+      
+      // after you place a wild card, you can place another card
+      if (card.getAction() == 4 || card.getAction() == 5){
+         return true; 
+      }
+      
      // match color
      if (card.getC() == c){
        System.out.println("playable color");
        return true;
      }
+     
      // match value
      if (action == 0 && card.getValue() == value){
        System.out.println("playable value");
        return true;
      }
+     
      // match action
      if (card.getAction() != 0 && action != 0 && card.getAction() == action){
          System.out.println("playable action"); 
          return true;
      }
+     
      // place wild card anytime
      if (card.getC() == 99 || c == 99){//wild cards
        System.out.println("playable wild");

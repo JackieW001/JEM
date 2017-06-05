@@ -10,7 +10,7 @@ public class DrawPile{
       populatePile(); 
       shuffle();
       cardImg = loadImage("./img/99_99_99.jpg");
-      cardImg.resize(75,110);
+      cardImg.resize(65,95);
       cardImgHeight = cardImg.height;
       cardImgWidth = cardImg.width;
       
@@ -21,7 +21,7 @@ public class DrawPile{
    * Displays DrawPile
    ********************************************************/
    public void displayPile(){
-       if (pile.size() > 0 ) {image(cardImg, 300, height/2 - cardImgHeight/2);}
+       if (pile.size() > 0 ) {image(cardImg, 300, height/2 - cardImgHeight/2 -10);}
        else { 
          fill(#62B475);
          strokeWeight(4);

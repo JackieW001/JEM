@@ -35,54 +35,43 @@ public void setup(){
 public void mouseClicked(){
   if (group.currentPlayer.equals(_user)){
     for (int i = 0; i < _user.hand.size(); i++){
+      
       if(_user.hand.get(i).isMouseInRange()){
          Card chosenCard = _user.hand.remove(i);
          if ( _user.numOfCardsPlaced >= 1 && _placePile.peek().playableInCombo(chosenCard)){
            _placePile.add(chosenCard);
            _user.numOfCardsPlaced++;
+           _user.noAction = false;
          }
+         
          else if ( _user.numOfCardsPlaced == 0 && _placePile.peek().playable(chosenCard)){
            System.out.println("action?:" + chosenCard.action);
            if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
            _placePile.add(chosenCard); 
            _user.numOfCardsPlaced++;
+           _user.noAction = false;
          }
+         
          else { 
-           /* DISPLAY SOME KIND OF ERROR MESSAGE */
-         _user.hand.add(i, chosenCard); 
+          _user.hand.add(i, chosenCard); 
          }
        }
      }
+     
      if(_user.isInRangeOfEndButton()){
-         if (_user.numOfCardsPlaced == 0){ _user.drawCard(); }
+         if (_user.noAction){ _user.drawCard(); }
          _user.endTurn();
          _user.numOfCardsPlaced = 0;
      }
      if (_drawPile.isInRange())
-        _user.drawCard();
-       
-  }
+        _user.drawCard();   
+      }
    
 }
    
 //Loop
 public void draw(){
     background(#62B475);
-    _user.displayHand();
-    _drawPile.displayPile();
-    _placePile.displayPile();
-    AI1.displayHand();
-    AI2.displayHand();
-    AI3.displayHand();
-    
-    fill(0);
-    textSize(25);
-    text("Current Player: " + group.currentPlayer.name, 40,40);
-    if (group.isClockwise)
-      text("is Clockwise: true", 60,60);
-    else
-       text("is Clockwise: false", 60,60);
-    
     group.play();
     group.pass();
 }

@@ -31,11 +31,12 @@ public class PlacePile{
          rect( width/2, height/2 - 55, 70, 105,7);
       }  
       else {
-        pile.get(pile.size()-1).display(width/2, height/2 - 55);
+        peek().display(width/2, height/2 - 55);
       }
    }
    public void add(Card card){
-      pile.add(card); 
+      pile.add(card);
+      displayPile();
    }
    public int size(){
      return pile.size();
