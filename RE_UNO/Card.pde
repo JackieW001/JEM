@@ -93,6 +93,9 @@ public class Card {
     public int getAction(){
        return action; 
     }
+    public void setColor(int x){
+       c = x; 
+    }
     
     /*****************************************************
     * Checks to see if mouse is in range of card

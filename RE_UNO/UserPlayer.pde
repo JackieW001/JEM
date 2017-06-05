@@ -3,6 +3,7 @@ public class UserPlayer extends Player{
    int space;
    // used to allow to place combos
    int numOfCardsPlaced;
+   boolean noAction;
    
    /***************** CONSTRUCTOR *************************/
    UserPlayer(){
@@ -49,6 +50,12 @@ public class UserPlayer extends Player{
       if ( hand.size() < 26){
         hand.add(_drawPile.removeCard());
       }
+    }
+    
+    public void noAction(){
+       if (noAction){
+          _user.drawCard(); 
+       }
     }
     
     //Displays the endTurn Button on the interface

@@ -23,6 +23,7 @@ public abstract class Player{
    public Player getNext() { return next; }
    public void setPrev(Player newPrev) { prev = newPrev; }
    public void setNext(Player newNext) { next = newNext; }
+   public void placeCard(int i) { _placePile.add(hand.remove(i)); }
    /********************************************************/
    
    public void giveAction( Card card){
@@ -33,20 +34,54 @@ public abstract class Player{
       nextPlayer = group.currentPlayer.getPrev(); 
       
      if (card.getAction() == 5){//wild4
-       for (int i = 0; i < 4; i++)
-         nextPlayer.drawCard();
-       card.setC(1);
+       if (group.currentPlayer == _user){     
+        while (keyPressed){
+          if (key == 1)
+            _placePile.getCard(_placePile.size()-1).setColor(1);
+          else if (key == 2)
+            _placePile.getCard(_placePile.size()-1).setColor(2);
+          else if (key == 3)
+            _placePile.getCard(_placePile.size()-1).setColor(3);
+          else if (key == 4)
+            _placePile.getCard(_placePile.size()-1).setColor(4);
+        }
+      }
+      
+      else {
+       int x = (int)(Math.random() * 4) + 1;
+       _placePile.getCard(_placePile.size()-1).setColor(x);
+      }
+      
+       group.currentPlayer.endTurn();
+       addBattle(4);
        System.out.println("in draw 4");
        return;
      }
      if (card.getAction() == 4){//wild
-       card.setC(1); //set color to red
-       System.out.println("in wild red");
+       if (group.currentPlayer == _user){     
+        while (keyPressed){
+          if (key == 1)
+            _placePile.getCard(_placePile.size()-1).setColor(1);
+          else if (key == 2)
+            _placePile.getCard(_placePile.size()-1).setColor(2);
+          else if (key == 3)
+            _placePile.getCard(_placePile.size()-1).setColor(3);
+          else if (key == 4)
+            _placePile.getCard(_placePile.size()-1).setColor(4);
+        }
+      }
+      
+      else {
+       int x = (int)(Math.random() * 4) + 1;
+       _placePile.getCard(_placePile.size()-1).setColor(x);
+      }
+      
+       System.out.println("in wild");
        return;
      }
      if (card.getAction() == 3){//+2
-       nextPlayer.drawCard();
-       nextPlayer.drawCard();
+       group.currentPlayer.endTurn();
+       addBattle(2);
        System.out.println("in draw 2");
        return;
      }
@@ -63,6 +98,41 @@ public abstract class Player{
        return;
      }
        
+   }
+   
+   /*===================================
+   addBattle() - for +2 and +4
+   ===================================*/
+   void addBattle(int x){
+     if ( hasToF(group.currentPlayer.getHand(), 2) >=  0 ) {
+       group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 2) );
+       group.pass();
+       addBattle(x + 2);
+       return;
+       }
+     else if ( hasToF(group.currentPlayer.getHand(), 4) >= 0) {
+       group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 4) );
+       group.pass();
+       addBattle(x + 4);
+       return;
+       }
+   
+     else {
+         for (int y = 0; y < x; y++){
+         group.currentPlayer.drawCard(); 
+       }
+     }
+   }
+ 
+   int hasToF(ArrayList<Card> c, int a){
+     for (int x = 0; x < c.size(); x++){
+        if (c.get(x).getAction() == a){
+          if (c.get(x).playable( _placePile.getCard( _placePile.size()-1 )) ){
+            return x; 
+          }
+        }
+     }
+     return -1;
    }
    
    public void endTurn(){
