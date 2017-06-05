@@ -26,7 +26,7 @@ public class DrawPile{
          fill(#62B475);
          strokeWeight(4);
          stroke(255, 150);
-         rect( width/2, height/2 - 55, 70, 105,7);
+         rect( 300, height/2 - cardImgHeight/2, cardImgWidth, cardImgHeight,7);
        }
    }
    
