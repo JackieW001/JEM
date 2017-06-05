@@ -30,6 +30,14 @@ public class DrawPile{
        }
    }
    
+   public int getSize(){
+     return pile.size();
+   }
+   
+   public Card getCard(int i){
+     return pile.get(i);
+   }
+   
    /*****************************************************
     * Add a card to the draw pile
     ******************************************************/
@@ -112,5 +120,8 @@ public class DrawPile{
         return false;
    }
       
+   public void addCard(Card card){
+     pile.add(0, card);
+   }
   
 }
