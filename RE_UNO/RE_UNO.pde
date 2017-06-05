@@ -77,11 +77,11 @@ public void draw(){
     
     fill(0);
     textSize(25);
-    text(group.currentPlayer.name, 40,40);
+    text("Current Player: " + group.currentPlayer.name, 40,40);
     if (group.isClockwise)
-      text("true", 60,60);
+      text("is Clockwise: true", 60,60);
     else
-       text("false", 60,60);
+       text("is Clockwise: false", 60,60);
     
     group.play();
     group.pass();
