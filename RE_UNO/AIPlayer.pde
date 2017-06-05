@@ -95,9 +95,14 @@ public class AIPlayer extends Player{
     * To be changed with real AI (Ed and Maggie)
     ******************************************************/
     public void play(){
-      receiveAction(_placePile.getCard(_placePile.size()-1));
+      if (this.isSkipped) { 
+        this.isSkipped = false;
+        super.endTurn();
+        return;
+      }
       for ( int i = 0; i < hand.size()-1; i++ ){
          if ( hand.get(i).playable(_placePile.peek()) ){
+            if (hand.get(i).action != 0) { this.giveAction(hand.get(i)); }
              _placePile.add(hand.remove(i));
          }
          else { this.drawCard(); break;}

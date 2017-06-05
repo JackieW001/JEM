@@ -87,6 +87,9 @@ public class Card {
        return c; 
     }
     
+    public void setC( int newC){
+       c = newC; 
+    }
     public int getAction(){
        return action; 
     }
@@ -95,8 +98,8 @@ public class Card {
     * Checks to see if mouse is in range of card
     ******************************************************/
     public boolean isMouseInRange(){
-       if (mouseX > cardX && mouseX <  cardX + _user.space && 
-           mouseY > cardY && mouseY < cardY + cardHeight){
+       if (mouseX > this.cardX && mouseX <  this.cardX + _user.space && 
+           mouseY > this.cardY && mouseY < this.cardY + this.cardHeight){
              return true;
            }
        else {
@@ -112,12 +115,12 @@ public class Card {
        return true;
      }
      // match value
-     if (card.getValue() == value){
+     if (action == 0 && card.getValue() == value){
        System.out.println("playable value");
        return true;
      }
      // match action
-     if (card.getAction() != 99 && action != 99 && card.getAction() == action){
+     if (card.getAction() != 0 && action != 0 && card.getAction() == action){
          System.out.println("playable action"); 
          return true;
      }

@@ -42,6 +42,8 @@ public void mouseClicked(){
            _user.numOfCardsPlaced++;
          }
          else if ( _user.numOfCardsPlaced == 0 && _placePile.peek().playable(chosenCard)){
+           System.out.println("action?:" + chosenCard.action);
+           if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
            _placePile.add(chosenCard); 
            _user.numOfCardsPlaced++;
          }
@@ -64,6 +66,7 @@ public void mouseClicked(){
    
 //Loop
 public void draw(){
+      
     background(#62B475);
     _user.displayHand();
     _drawPile.displayPile();
@@ -79,7 +82,6 @@ public void draw(){
       text("true", 60,60);
     else
        text("false", 60,60);
-    //_user.play();
     
     group.play();
     group.pass();

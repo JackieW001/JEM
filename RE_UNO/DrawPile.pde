@@ -91,7 +91,13 @@ public class DrawPile{
    * Removes last card in pile (like a stack)
    ******************************************************/
    public Card removeCard(){
-      return pile.remove(pile.size()-1);
+      if (pile.size() > 0){
+         return pile.remove(pile.size()-1);
+       }
+      text("No more cards", width/2-30, height/2-10);
+      noLoop();
+      return null;
+      
    }
    
    /*****************************************************

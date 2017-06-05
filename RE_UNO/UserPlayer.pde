@@ -33,19 +33,15 @@ public class UserPlayer extends Player{
      int offset = (width/2) - (space*((getHandSize() - 1)/2)) - 30;
       
      for (int i = 0; i < hand.size(); i++){
-        hand.get(i).display(offset, height-hand.get(i).cardHeight-20);
+        int ypos = height-hand.get(i).cardHeight-20;
+        if (hand.get(i).isMouseInRange()){
+           ypos -= 30; 
+        }
+        hand.get(i).display(offset, ypos);
         offset += space; 
      }
    }
      
-   public void displayChosenCard(){
-     for (Card card: hand){
-          if (card.isMouseInRange()){
-             card.cardY -= 30;
-             card.display(card.cardX,card.cardY);
-          }
-       }
-   }
     /*****************************************************
      * Add a card to the player's hand
      ******************************************************/
@@ -133,9 +129,12 @@ public class UserPlayer extends Player{
     }
     //Loop for the player
     public void play() {
-       displayChosenCard();
+       if (this.isSkipped){
+         this.isSkipped = false; 
+         super.endTurn();
+         return;
+       }
        displayEndTurnButton();
-       receiveAction(_placePile.getCard(_placePile.size()-1));
     }
     
     

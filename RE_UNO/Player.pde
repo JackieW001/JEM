@@ -4,6 +4,7 @@ public abstract class Player{
    ArrayList<Card> hand; // max 20 cards 
    String name;
    Player next, prev;
+   boolean isSkipped;
    
    Player(){
        hand = new ArrayList<Card>(); 
@@ -24,39 +25,52 @@ public abstract class Player{
    public void setNext(Player newNext) { next = newNext; }
    /********************************************************/
    
-   public void receiveAction(Card card){
+   public void giveAction( Card card){
+     Player nextPlayer;
+     if (group.isClockwise)
+      nextPlayer = group.currentPlayer.getNext(); 
+     else
+      nextPlayer = group.currentPlayer.getPrev(); 
+      
      if (card.getAction() == 5){//wild4
-       drawCard();
-       drawCard();
-       drawCard();
-       drawCard();
+       for (int i = 0; i < 4; i++)
+         nextPlayer.drawCard();
+       card.setC(1);
+       System.out.println("in draw 4");
        return;
      }
      if (card.getAction() == 4){//wild
+       card.setC(1); //set color to red
+       System.out.println("in wild red");
        return;
      }
      if (card.getAction() == 3){//+2
-       drawCard();
-       drawCard();
+       nextPlayer.drawCard();
+       nextPlayer.drawCard();
+       System.out.println("in draw 2");
        return;
      }
      if (card.getAction() == 2){//skip
-       group.currentPlayer.endTurn();
+       nextPlayer.isSkipped = true;;
+       System.out.println("in skip");
        return;
      }
      if (card.getAction() == 1){//reverse
        group.isClockwise = !group.isClockwise;
+       return;
      }
      else {
        return;
      }
+       
    }
    
    public void endTurn(){
     if (group.isClockwise)
       group.currentPlayer = group.currentPlayer.getNext(); 
     else
-      group.currentPlayer = group.currentPlayer.getPrev();   
+      group.currentPlayer = group.currentPlayer.getPrev(); 
+      
    }  
    public abstract void displayHand();
    public abstract void drawCard();
