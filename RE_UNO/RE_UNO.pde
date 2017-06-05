@@ -54,6 +54,7 @@ public void mouseClicked(){
        }
      }
      if(_user.isInRangeOfEndButton()){
+         if (_user.numOfCardsPlaced == 0){ _user.drawCard(); }
          _user.endTurn();
          _user.numOfCardsPlaced = 0;
      }
@@ -66,7 +67,6 @@ public void mouseClicked(){
    
 //Loop
 public void draw(){
-      
     background(#62B475);
     _user.displayHand();
     _drawPile.displayPile();
