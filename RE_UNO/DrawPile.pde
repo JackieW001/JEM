@@ -94,7 +94,7 @@ public class DrawPile{
       if (pile.size() > 0){
          return pile.remove(pile.size()-1);
        }
-      text("No more cards", width/2-30, height/2-10);
+      text("No more cards", width/2-70, height/2-50);
       noLoop();
       return null;
       
