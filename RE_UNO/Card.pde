@@ -219,7 +219,7 @@ public class Card {
    } // compareTo
    
    public boolean isStarter(){
-     if (this.getAction() == 99){
+     if (this.getAction() == 0){
        return true;
      }
      else {
