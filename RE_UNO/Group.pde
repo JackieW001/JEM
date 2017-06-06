@@ -69,10 +69,10 @@ public class Group {
     AI3.displayHand();
     
     if (_user.getHandSize() == 0 ) { 
-      text("YOU WON!!", width/2-20, height/2+100); 
+      text("YOU WON!!", width/2-30, height/2+70); 
       noLoop();
     } else if ( AI1.getHandSize() == 0 || AI2.getHandSize() == 0 || AI3.getHandSize() == 0 ) {
-      text("YOU LOST!!", width/2-20, height/2+100);
+      text("YOU LOST!!", width/2-30, height/2+70);
       noLoop();
     }
   }

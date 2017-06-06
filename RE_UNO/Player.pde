@@ -44,51 +44,12 @@ public abstract class Player {
       nextPlayer = group.currentPlayer.getPrev(); 
 
     if (card.getAction() == 5) {//wild4
-      System.out.println("In wild4");
-      if (group.currentPlayer == _user) {     
-        while (keyPressed) {
-          if (key == 1)
-            _placePile.getCard(_placePile.size()-1).setColor(1);
-          else if (key == 2)
-            _placePile.getCard(_placePile.size()-1).setColor(2);
-          else if (key == 3)
-            _placePile.getCard(_placePile.size()-1).setColor(3);
-          else if (key == 4)
-            _placePile.getCard(_placePile.size()-1).setColor(4);
-        }
-      } else {
-        int x = (int)(Math.random() * 4) + 1;
-        _placePile.getCard(_placePile.size()-1).setColor(x);
-      }
-
+      group.currentPlayer.endTurn();
       addBattle(4);
       return;
     }
     
-    if (card.getAction() == 4) {//wild
-      System.out.println("In wild");
-      // choose color
-      if (group.currentPlayer == _user) {     
-        if (keyPressed) {
-          if (key == 1){
-            System.out.println("change color to red");
-            _placePile.getCard(_placePile.size()-1).setColor(1);
-          }
-          else if (key == 2)
-            _placePile.getCard(_placePile.size()-1).setColor(2);
-          else if (key == 3)
-            _placePile.getCard(_placePile.size()-1).setColor(3);
-          else if (key == 4)
-            _placePile.getCard(_placePile.size()-1).setColor(4);
-        }
-      } else {
-        int x = (int)(Math.random() * 4) + 1;
-        _placePile.getCard(_placePile.size()-1).setColor(x);
-      }
 
-      System.out.println("in wild");
-      return;
-    }
     if (card.getAction() == 3) {//+2
       group.currentPlayer.endTurn();
       addBattle(2);
