@@ -1,19 +1,22 @@
 public class UserPlayer extends Player {
-  //New variable
+  //Spaceing between cards in hand
   int space;
+  
   // used to allow to place combos
   int numOfCardsPlaced;
-  boolean noAction;
+  //boolean noAction;
 
   /***************** CONSTRUCTOR *************************/
   UserPlayer() {
     name = "You";
     hand = new  ArrayList<Card>();
+    numOfCardsPlaced = 0;
   }
 
   UserPlayer( String s ) {
     name = s;
     hand = new  ArrayList<Card>();
+    numOfCardsPlaced = 0;
   }
   /********************************************************/
 
@@ -24,7 +27,7 @@ public class UserPlayer extends Player {
   public void displayHand() {
     sort();
     // spacing between cards
-    space = 70; //= (width-200)/getHandSize();
+    space = 70; 
     if (getHandSize() > 10)
       space = 25;
     else if (getHandSize() > 8)
@@ -35,9 +38,12 @@ public class UserPlayer extends Player {
 
     for (int i = 0; i < hand.size(); i++) {
       int ypos = height-hand.get(i).cardHeight-20;
+      
       if (hand.get(i).isMouseInRange()) {
+        // moves card up if it is chosen card( ie mouse is in the range of the card)
         ypos -= 30;
       }
+      
       hand.get(i).display(offset, ypos);
       offset += space;
     }
@@ -52,12 +58,14 @@ public class UserPlayer extends Player {
     }
   }
 
+  /*
   public void noAction() {
     if (noAction) {
       _user.drawCard();
     }
   }
-
+  */
+  
   //Displays the endTurn Button on the interface
   public void displayEndTurnButton() {
     if (group.currentPlayer.name.equals("You")) {
@@ -70,7 +78,8 @@ public class UserPlayer extends Player {
     }
   }
 
-  //Hides it while it's not the player's turn
+  // Hides end turn button if it's not the player's turn 
+  // by drawing rectangle the same color of background over it 
   public void hideEndButton() {
     fill(#62B475);
     noStroke();
@@ -78,8 +87,10 @@ public class UserPlayer extends Player {
     fill(#62B475);
   }
 
-
-  //Checks if the mouse is in range
+/*****************************************************
+ * Checks if the mouse is in range of the end button
+ * Used within mouseClicked() method in driver file
+   ******************************************************/
   public boolean isInRangeOfEndButton() {
     if (mouseX > width/2-100 && mouseX < width/2 + 100 &&
       mouseY > height/2 && mouseY < height/2 + 180) {
@@ -91,6 +102,10 @@ public class UserPlayer extends Player {
 
   /*****************************************************
    * Autosort player hand using heapsort
+   * Sorts first by numerical value. Lowest cards go to the left side of the hand.
+   * Sorts by color if the numberical value is the same. Left to right: Red --> Yellow --> Green --> Blue
+   * All action cards will be at the end and sorted by color
+   * Wild and wild4 cards are the rightmost cards
    ******************************************************/
   public void sort() {
     for (int x = hand.size() / 2 -1; x >= 0; x--) {
@@ -129,6 +144,10 @@ public class UserPlayer extends Player {
     }
   }
 
+ /*****************************************************
+  * Ends the user player's turn.
+  * Accounts for if the user player is skipped
+  ******************************************************/
   public void endTurn() {
     super.endTurn();
     hideEndButton();

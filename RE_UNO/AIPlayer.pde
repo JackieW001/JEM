@@ -96,7 +96,7 @@ public class AIPlayer extends Player {
    ******************************************************/
 
   /*
-   * Early Challenge AI (third round)
+   * Early Challenge AI 
    *
    * Iterate through the hand and create a list of all playable combos involving cards with numerical values.  First, 
    * check to see if the next player is about to win (1-2 cards left).  If true, try to play one of the following: 
@@ -112,8 +112,8 @@ public class AIPlayer extends Player {
     Player prevPlayer = getPrev();
     Card lastPlayedCard = _placePile.peek();
 
-    for (int handIndex = 0; handIndex < hand.size(); handIndex++) {
-      Card cardAtHandIndex = hand.get(handIndex);
+    for (int i = 0; i < hand.size(); i++) {
+      Card cardAtHandIndex = hand.get(i);
       if (cardAtHandIndex.getAction() != 99 && cardAtHandIndex.getAction() != 4 && cardAtHandIndex.playable(lastPlayedCard)) {
         if (cardAtHandIndex.getAction() == 1 && prevPlayer.getHandSize() < 3) {
           continue;
@@ -174,23 +174,32 @@ public class AIPlayer extends Player {
     return bestMove;
   }
 
+//Checks if skipped, else play()s
+  /*****************************************************
+   * play() - play() method for AI
+   ******************************************************/
   public void play() {
+    //If skipped, automatically end turn, reconfigures isSkipped
     if (this.isSkipped) { 
       this.isSkipped = false;
       super.endTurn();
       return;
     }
 
+    //Makes an ArrayList of Cards, in order (PriorityQueue) based on which is the bestMove to use
     ArrayList<Card> bestMove = getBestMove();
 
+    //Prints the hand and bestMove to use in terminal, used for clarity for ourselves
     println(hand);
     println(bestMove);
 
+    //Chooses the best choice
     for (int bestMoveIndex = 0; bestMoveIndex < bestMove.size(); bestMoveIndex++) {
       Card bestMoveCardAtIndex = bestMove.get(bestMoveIndex);  
-      if (bestMoveCardAtIndex.action != 0) {
+      if (bestMoveCardAtIndex.action != 0) { //Tries to avoid cards with no action for best move
         this.giveAction(bestMoveCardAtIndex);
       }
+      //Removes the card with the bestMove from hand, and places it on the pile
       hand.remove(bestMoveCardAtIndex);
       _placePile.add(bestMoveCardAtIndex);
     }
