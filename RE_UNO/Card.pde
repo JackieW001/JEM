@@ -136,46 +136,58 @@ public class Card {
              
     }
     
+    // only called when you place first card
     public boolean playable(Card card){
-      
-      // after you place a wild card, you can place another card
-      if (card.getAction() == 4 || card.getAction() == 5){
-         return true; 
-      }
+     // variable card should always _placePile.peek()
       
      // match color
-     if (card.getC() == c){
+     if (card.getC() == this.c){
        System.out.println("playable color");
        return true;
      }
      
      // match value
-     if (action == 0 && card.getValue() == value){
+     if (this.action == 0 && card.getAction() == 0 && card.getValue() == this.value){
        System.out.println("playable value");
        return true;
      }
      
      // match action
-     if (card.getAction() != 0 && action != 0 && card.getAction() == action){
+     if (this.action != 0 && card.getAction() != 0 && card.getAction() == this.action){
          System.out.println("playable action"); 
          return true;
      }
      
-     // place wild card anytime
-     if (card.getC() == 99 || c == 99){//wild cards
+     // place wild card anytime only if first card on place pile is a numerical card
+     if ( (this.action == 4 || this.action == 5) && card.getAction() == 0){//wild cards
        System.out.println("playable wild");
        return true;
      }
+
      return false;
    }
-   
-
+  
    public boolean playableInCombo(Card card){
-       if (card.getValue() == value){
-          return true; 
-       }
-       return false;
+      // card should always be _placePile.peek()
+      
+      // match value
+      if (card.getAction() == 0 && card.getValue() == this.value){
+         return true; 
+      }
+      
+      // match action
+      if (this.value == 99 && card.value == 99 && card.getAction() == this.action ) {
+         return true; 
+      }
+      
+      // after you place a wild card, you can place another card
+      if ( (card.getAction() == 4 || card.getAction() == 5) && this.action == 0){
+         return true; 
+      }
+      
+      return false;
    }
+   
    
    public int compareTo( Card other){
        if (this.getValue() < other.getValue()){
