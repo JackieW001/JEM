@@ -6,6 +6,8 @@ PlacePile _placePile;
 UserPlayer _user;
 AIPlayer AI1,AI2,AI3;
 Group group;
+int buttonW, buttonH, buttonX, buttonY;
+boolean buttonPressed;
 
 
 //Setups the interface
@@ -13,11 +15,11 @@ Group group;
 public void setup(){
     size(1000,700);
     buttonPressed = false;
-    buttonW = 400;
-    buttonH = 500;
+    buttonW = 450;
+    buttonH = 550;
     textSize(buttonH);
-    buttonX = (width-400)/2;
-    buttonY = (height-500)/2;
+    buttonX = (width-450)/2;
+    buttonY = (height-550)/2;
     _drawPile = new DrawPile();
     _placePile = new PlacePile();
     _user = new UserPlayer();
@@ -86,14 +88,16 @@ public void draw(){
       fill(45, 139,206);
       rect(buttonX, buttonY, buttonW, buttonH);
       fill(0);
-      String s = "Click right here to start the game!";
-      fill(50);
-      textSize(17);
-      text(s, buttonX+10, buttonY+buttonH-10);
+      String s = "Click right here to start the game! Have Fun :)";
+      fill(255,0,0);
+      textSize(28);
+      text(s, buttonX+24, buttonY+buttonH-80, 380, 445);
       textSize(50);
-      text("RE UNO!", buttonX+90, buttonY+60);
+      fill(255,204,0);
+      text("RE UNO!", buttonX+125, buttonY+60);
       s = "Rules:";
       textSize(22);
+      fill(50, 55, 100);
       text(s, buttonX+18, buttonY+90);
       fill(0, 102, 153);
       s = "(1) This game is set up for one user player and 3 AI players.";
