@@ -25,7 +25,7 @@ public class UserPlayer extends Player {
    * bottom of the display window
    ******************************************************/
   public void displayHand() {
-    //sort();
+    //sortHand();
     // spacing between cards
     space = 70; 
     if (getHandSize() > 10)
@@ -103,8 +103,8 @@ public class UserPlayer extends Player {
    * All action cards will be at the end and sorted by color
    * Wild and wild4 cards are the rightmost cards
    ******************************************************/
-  /*
-  public void sort() {
+  
+  public void sortHand() {
     for (int x = hand.size()/2 - 1; x >= 0; x--) {
       heapify(hand.size(), x);
     }
@@ -117,11 +117,10 @@ public class UserPlayer extends Player {
       heapify(x, 0);
     }
   }
- */
+
   /*****************************************************
    * Helper function for sort
    ******************************************************/
-  /*
   private void heapify(int a, int b) {
     int largest = b;
     int l = 2 * b + 1;  //left
@@ -133,9 +132,7 @@ public class UserPlayer extends Player {
     if (r < a && hand.get(r).compareTo(hand.get(largest)) > 0) {
       largest = r;
     }
-   // if ( hand.get(l).compareTo(hand.get(largest)) == 0 || hand.get(r).compareTo(hand.get(largest)) == 0){
-      
-   // }
+
 
     if (largest != b) {
       Card swap = hand.get(b);
@@ -145,7 +142,7 @@ public class UserPlayer extends Player {
       heapify(a, largest);
     }
   }
- */
+
  
  /*****************************************************
   * Ends the user player's turn.
