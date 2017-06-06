@@ -92,13 +92,95 @@ public class AIPlayer extends Player {
   }
 
   /*****************************************************
-   * Basic AI
-   * Iterate through the hand and check to see if there is a playable card; if so
-   * play the card.  If there is no playable card, draw a card.
-   *
-   * Note bug: The loop doesn't break after a card is played; would be adding the
-   * possibility of combos next.
+   * AI
    ******************************************************/
+
+  /*
+   * Early Challenge AI (third round)
+   *
+   * Iterate through the hand and create a list of all playable combos involving cards with numerical values.  First, 
+   * check to see if the next player is about to win (1-2 cards left).  If true, try to play one of the following: 
+   * skip, draw 2, wild4, or reverse (if previous player isn't about to win).  Avoid wild card at all cost!!  Otherwise,
+   * Add any playable action cards separately (don't chain them; you usually only want to chain them only if you can 
+   * play them all <also there are rules against chaining draw 4s I think>).  If the longest combo means playing reverse
+   * when the previous player is about to win, draw a card and end the turn instead.  Otherwise, find and play the longest
+   * combo (one can theoretically rule that you should play single cards first and leave the combos for later... <in which 
+   * case simply look for the shortest possibleMove combo>).  If no card can be played, then draw a card.
+   *
+   * Future ToDos
+   * ------------
+   * Improvement for round 4 AI (probably won't get to it)
+   * Modify the round 2 algorithm to get rid of lonely strays first, saving combos (particulary those composed of multiple
+   * colors for later).  This decreases the chance of the need to draw cards in the future.  Also modify the round 3 heuristic
+   * to take into account the players coming after (ie if you have two skip cards and the next two players are both about to win,
+   * play both cards if possible instead of just one).
+   */
+
+  private ArrayList<Card> getBestMoveToThwartWin(){
+    Player prevPlayer = getPrev();
+    Card lastPlayedCard = _placePile.peek();
+
+    for (int handIndex = 0; handIndex < hand.size(); handIndex++) {
+      Card cardAtHandIndex = hand.get(handIndex);
+      if (cardAtHandIndex.getAction() != 99 && cardAtHandIndex.getAction() != 4 && cardAtHandIndex.playable(lastPlayedCard)) {
+        if (cardAtHandIndex.getAction() == 1 && prevPlayer.getHandSize() < 3) {
+          continue;
+        }
+        ArrayList<Card> bestMove = new ArrayList<Card>();
+        bestMove.add(cardAtHandIndex);
+        return bestMove;
+      }
+    }
+    return new ArrayList<Card>();
+  }
+
+  private ArrayList<ArrayList<Card>> getPossibleMoves() {
+    Card lastCardPlayed = _placePile.peek();
+    ArrayList<ArrayList<Card>> possibleMovesList = new ArrayList<ArrayList<Card>>();
+
+    for (int cardIndex = 0; cardIndex < hand.size(); cardIndex++) {
+      Card currentCard = hand.get(cardIndex);
+
+      boolean addedToList = false;
+      for (int possibleMovesListIndex = 0; possibleMovesListIndex < possibleMovesList.size(); possibleMovesListIndex++) {
+        ArrayList<Card> possibleMove = possibleMovesList.get(possibleMovesListIndex);
+        Card firstCardInPossibleMove = possibleMove.get(0);
+        if (currentCard.getValue() != 99 && firstCardInPossibleMove.getValue() == currentCard.getValue()) {
+          possibleMove.add(currentCard);
+          addedToList = true;
+          break;
+        }
+      }
+
+      if (!addedToList && currentCard.playable(lastCardPlayed)) {
+        ArrayList<Card> possibleMove = new ArrayList<Card>();
+        possibleMove.add(currentCard);
+        possibleMovesList.add(possibleMove);
+      }
+    }
+    return possibleMovesList;
+  }
+
+  private ArrayList<Card> getBestMove() {
+    Player nextPlayer = getNext();
+
+    if (nextPlayer.getHandSize() < 3) {
+      ArrayList<Card> bestMove = getBestMoveToThwartWin();
+      if (bestMove.size() > 0) {
+        return bestMove;
+      }
+    }
+
+    ArrayList<ArrayList<Card>> possibleMovesList = getPossibleMoves();
+    ArrayList<Card> bestMove = new ArrayList<Card>();
+    for (int possibleMovesListIndex = 0; possibleMovesListIndex < possibleMovesList.size(); possibleMovesListIndex++) {
+      ArrayList<Card> possibleMove = possibleMovesList.get(possibleMovesListIndex);
+      if (possibleMove.size() > bestMove.size()) {
+        bestMove = possibleMove;
+      }
+    }
+    return bestMove;
+  }
 
   public void play() {
     if (this.isSkipped) { 
@@ -107,47 +189,30 @@ public class AIPlayer extends Player {
       return;
     }
 
-    ArrayList<ArrayList<Card>> possibleMovesList = new ArrayList<ArrayList<Card>>();
+    ArrayList<Card> bestMove = getBestMove();
 
-    for (int i = 0; i < hand.size(); i++) {
-      Card currentCard = hand.get(i);
+    println(hand);
+    println(bestMove);
 
-      boolean addToList = false;
-      for (int possibleMovesListIndex = 0; possibleMovesListIndex < possibleMovesList.size(); possibleMovesListIndex++) {
-        if (currentCard.getValue() != 99 && possibleMovesList.get(possibleMovesListIndex).get(0).getValue() == currentCard.getValue()) {
-          possibleMovesList.get(possibleMovesListIndex).add(currentCard);
-          addToList = true;
-          break;
-        }
+    for (int bestMoveIndex = 0; bestMoveIndex < bestMove.size(); bestMoveIndex++) {
+      Card bestMoveCardAtIndex = bestMove.get(bestMoveIndex);  
+      if (bestMoveCardAtIndex.action != 0) {
+        this.giveAction(bestMoveCardAtIndex);
       }
-
-      if (!addToList && currentCard.playable(_placePile.peek())) {
-        ArrayList<Card> possibleMove = new ArrayList<Card>();
-        possibleMove.add(currentCard);
-        possibleMovesList.add(possibleMove);
-      }
+      hand.remove(bestMoveCardAtIndex);
+      _placePile.add(bestMoveCardAtIndex);
     }
 
-    ArrayList<Card> bestMove = new ArrayList<Card>();
-    for (int possibleMovesListIndex = 0; possibleMovesListIndex < possibleMovesList.size(); possibleMovesListIndex++) {
-      ArrayList<Card> possibleMove = possibleMovesList.get(possibleMovesListIndex);
-      if (possibleMove.size() > bestMove.size()) {
-        bestMove = possibleMove;
-      }
+    Player prevPlayer = getPrev();
+    boolean playingReverseWhenPreviousPlayerIsAboutToWin = false;
+
+    boolean noPossibleMove = bestMove.size() == 0;
+    if (!noPossibleMove) {
+      Card firstCardInBestMove = bestMove.get(0);
+      playingReverseWhenPreviousPlayerIsAboutToWin = (bestMove.size() == 1 && firstCardInBestMove.getAction() == 1 && prevPlayer.getHandSize() < 3);
     }
 
-    //println(hand);
-    //println(bestMove);
-
-    for (int i = 0; i < bestMove.size(); i++) {
-      if (bestMove.get(i).action != 0) {
-        this.giveAction(bestMove.get(i));
-      }
-      hand.remove(bestMove.get(i));
-      _placePile.add(bestMove.get(i));
-    }
-
-    if (bestMove.size() == 0) {
+    if (noPossibleMove || playingReverseWhenPreviousPlayerIsAboutToWin) {
       this.drawCard();
     }
     super.endTurn();

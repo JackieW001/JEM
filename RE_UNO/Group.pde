@@ -3,7 +3,7 @@ public class Group {
   //Variables
   Player currentPlayer;
   boolean isClockwise;
-
+  boolean isActionTaken;
 
   Group() {
     currentPlayer = null;
@@ -38,24 +38,11 @@ public class Group {
   }
   //play method as a loop
   public void play() {
-    //background(#62B475);
+    background(#62B475);
     if (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0) {
       if (!this.currentPlayer.equals(_user)) {
         delay(1500);
-      }  
-      
-      // Display upper left text
-      textSize(15);
-      fill(0);
-      text("Current Player: " + currentPlayer.name, 20, 40);
-      
-      String displayIsClockWise;
-      if (isClockwise)
-          displayIsClockWise = "Clockwise";
-      else
-          displayIsClockWise = "Counterclockwise";
-      text("Direction: " + displayIsClockWise, 20, 60);
-      
+      }        
       this.currentPlayer.play();
 
       // endTurn button
@@ -65,16 +52,16 @@ public class Group {
         _user.hideEndButton();
       }
     }
-
+    textSize(32);
+    fill(0);
+    
+    
     _user.displayHand();
     _drawPile.displayPile();
     _placePile.displayPile();
     AI1.displayHand();
     AI2.displayHand();
     AI3.displayHand();
-    
-    textSize(32);
-    fill(0);
     if (_user.getHandSize() == 0 ) { 
       text("YOU WON!!", width/2-20, height/2+100); 
       noLoop();

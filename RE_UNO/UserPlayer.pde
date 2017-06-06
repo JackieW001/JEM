@@ -3,20 +3,17 @@ public class UserPlayer extends Player {
   int space;
   // used to allow to place combos
   int numOfCardsPlaced;
-  boolean noAction = true;
-  int formerHandSize;
+  boolean noAction;
 
   /***************** CONSTRUCTOR *************************/
   UserPlayer() {
     name = "You";
     hand = new  ArrayList<Card>();
-    formerHandSize = 0;
   }
 
   UserPlayer( String s ) {
     name = s;
     hand = new  ArrayList<Card>();
-    formerHandSize = 0;
   }
   /********************************************************/
 
@@ -28,7 +25,6 @@ public class UserPlayer extends Player {
     sort();
     // spacing between cards
     space = 70; //= (width-200)/getHandSize();
-    
     if (getHandSize() > 10)
       space = 25;
     else if (getHandSize() > 8)
@@ -56,6 +52,11 @@ public class UserPlayer extends Player {
     }
   }
 
+  public void noAction() {
+    if (noAction) {
+      _user.drawCard();
+    }
+  }
 
   //Displays the endTurn Button on the interface
   public void displayEndTurnButton() {
@@ -123,20 +124,15 @@ public class UserPlayer extends Player {
       Card swap = hand.get(b);
       hand.set(b, hand.get(largest));
       hand.set(largest, swap);
+
       heapify(a, largest);
     }
   }
 
   public void endTurn() {
-    if (formerHandSize == hand.size()){
-      System.out.println("Auto drawing a card");
-      drawCard();
-    }
-    formerHandSize = hand.size(); 
     super.endTurn();
     hideEndButton();
   }
-  
   //Loop for the player
   public void play() {
     if (this.isSkipped) {
