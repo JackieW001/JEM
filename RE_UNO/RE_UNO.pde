@@ -12,6 +12,12 @@ Group group;
 
 public void setup(){
     size(1000,700);
+    buttonPressed = false;
+    buttonW = 400;
+    buttonH = 500;
+    textSize(buttonH);
+    buttonX = (width-400)/2;
+    buttonY = (height-500)/2;
     _drawPile = new DrawPile();
     _placePile = new PlacePile();
     _user = new UserPlayer();
@@ -34,6 +40,8 @@ public void setup(){
 
 //Based on what the mouse clicked on, does a certain action
 public void mouseClicked(){
+  if (mouseX > buttonX && mouseX < buttonX+buttonW && mouseY > buttonY && mouseY < buttonY+buttonH)
+      buttonPressed = true;
   if (group.currentPlayer.equals(_user)){
     for (int i = 0; i < _user.hand.size(); i++){
       if(_user.hand.get(i).isMouseInRange()){
@@ -71,15 +79,41 @@ public void draw(){
     background(#62B475);    
     group.play();
     group.pass();
-    /****************
     if (buttonPressed) {
     } else {
     // Show the button
     background(0);
-      fill(255);
+      fill(45, 139,206);
       rect(buttonX, buttonY, buttonW, buttonH);
       fill(0);
-      text("STARTGAME", buttonX+10, buttonY+buttonH-10);
+      String s = "Click right here to start the game!";
+      fill(50);
+      textSize(17);
+      text(s, buttonX+10, buttonY+buttonH-10);
+      textSize(50);
+      text("RE UNO!", buttonX+90, buttonY+60);
+      s = "Rules:";
+      textSize(22);
+      text(s, buttonX+18, buttonY+90);
+      fill(0, 102, 153);
+      s = "(1) This game is set up for one user player and 3 AI players.";
+      textSize(11.5);
+      fill(50);
+      text(s, buttonX+16, buttonY+100, 380, 445);  // Text wraps within text box
+      s = "(2) Each player is dealt 8 cards and the rest of the cards in the deck are in a face down draw pile.";
+      text(s, buttonX+16, buttonY+120, 380, 445);  // Text wraps within text box
+      s = "(3) Next to the draw pile is a face up place pile. The first card is drawn from the draw pile and then the game begins!";
+      text(s, buttonX+16, buttonY+156, 380, 445);  // Text wraps within text box
+      s = "(4) Each player places cards that match the top card in the place pile. To match, the cards must have the same number, color, or action symbol, and wild cards/wild4 cards can always be placed! For example: if the topmost card in the place pile is a yellow seven, then any yellow card or any card numbered \"7\" can be placed, as well as any wild or wild4 cards.";
+      text(s, buttonX+16, buttonY+192, 380, 445);  // Text wraps within text box
+      s = "(5) If a player has no playable cards, then they may either skip their turn (pressing the End Turn button), or draw a card (pressing the draw pile). If the player draws a card and it is not playable, then the player's turn is ended. If it is playable, the player may play the card.";
+      text(s, buttonX+16, buttonY+297, 380, 445);  // Text wraps within text box
+      s = "(6) If any player has only one card left in their hand, they must press the \"UNO!\" button within 45 seconds, or they will have to draw four cards.";
+      text(s, buttonX+16, buttonY+368, 380, 445);  // Text wraps within text box
+      s = "(7) When any player is left with no cards in their hand, they win!";
+      text(s, buttonX+16, buttonY+421, 380, 445);  // Text wraps within text box
+      s = "ENJOY OUR GAME!";
+      textSize(26);
+      text(s, buttonX+90, buttonY+462);
     }
-    *****************/
 }
