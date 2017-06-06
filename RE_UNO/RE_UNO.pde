@@ -1,6 +1,5 @@
 
 //Variables
-
 DrawPile _drawPile;
 PlacePile _placePile;
 UserPlayer _user;
