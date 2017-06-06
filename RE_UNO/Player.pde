@@ -97,7 +97,6 @@ public abstract class Player {
     }
     if (card.getAction() == 2) {//skip
       nextPlayer.isSkipped = true;
-      ;
       System.out.println("in skip");
       return;
     }
@@ -115,12 +114,12 @@ public abstract class Player {
   void addBattle(int x) {
     if ( hasToF(group.currentPlayer.getHand(), 2) >=  0 ) {
       group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 2) );
-      group.pass();
+      group.currentPlayer.endTurn();
       addBattle(x + 2);
       return;
     } else if ( hasToF(group.currentPlayer.getHand(), 4) >= 0) {
       group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 4) );
-      group.pass();
+      group.currentPlayer.endTurn();
       addBattle(x + 4);
       return;
     } else {
