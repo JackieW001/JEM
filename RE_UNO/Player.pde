@@ -5,6 +5,7 @@ public abstract class Player {
   String name;
   Player next, prev;
   boolean isSkipped;
+  int numOfCardsPlaced;
 
   Player() {
     hand = new ArrayList<Card>();
@@ -44,6 +45,7 @@ public abstract class Player {
       nextPlayer = group.currentPlayer.getPrev(); 
 
     if (card.getAction() == 5) {//wild4
+      /*******************************
       System.out.println("In wild4");
       if (group.currentPlayer == _user) {     
         while (keyPressed) {
@@ -60,11 +62,12 @@ public abstract class Player {
         int x = (int)(Math.random() * 4) + 1;
         _placePile.getCard(_placePile.size()-1).setColor(x);
       }
-
+      *******************************/
       //addBattle(4);
       return;
     }
     
+    /***********
     if (card.getAction() == 4) {//wild
       System.out.println("In wild");
       // choose color
@@ -83,22 +86,22 @@ public abstract class Player {
         }
       } else {
         int x = (int)(Math.random() * 4) + 1;
-        _placePile.getCard(_placePile.size()-1).setColor(x);
+        _placePile.peek().setColor(x);
       }
       System.out.println("in wild");
       return;
     }
+    *************/
     
     if (card.getAction() == 3) {//+2
-      group.currentPlayer.endTurn();
-      addBattle(2);
+      // group.currentPlayer.endTurn();
+      // addBattle(2);
       System.out.println("in draw 2");
       return;
     }
     
     if (card.getAction() == 2) {//skip
       nextPlayer.isSkipped = true;
-      ;
       System.out.println("in skip");
       return;
     }
@@ -144,6 +147,9 @@ public abstract class Player {
   }
 
   public void endTurn() {
+    if (this.numOfCardsPlaced == 0){
+       this.drawCard(); 
+    }
     if (group.isClockwise)
       group.currentPlayer = group.currentPlayer.getNext(); 
     else
