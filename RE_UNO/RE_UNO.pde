@@ -47,12 +47,12 @@ public void mouseClicked(){
       
       if(_user.hand.get(i).isMouseInRange()){
          Card chosenCard = _user.hand.remove(i);
-         if ( _user.numOfCardsPlaced >= 1 && _placePile.peek().playableInCombo(chosenCard)){
+         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){
            _placePile.add(chosenCard);
            _user.numOfCardsPlaced++;
          }
          
-         else if ( _user.numOfCardsPlaced == 0 && _placePile.peek().playable(chosenCard)){
+         else if ( _user.numOfCardsPlaced == 0 && chosenCard.playable(_placePile.peek())){
            System.out.println("action?:" + chosenCard.action);
            if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
            _placePile.add(chosenCard); 
