@@ -127,7 +127,7 @@ public class Card {
     ******************************************************/
     public boolean isMouseInRange(){
        if (mouseX > this.cardX && mouseX <  this.cardX + _user.space && 
-           mouseY > this.cardY && mouseY < this.cardY + this.cardHeight){
+           mouseY > this.cardY ){
              return true;
            }
        else {
@@ -162,6 +162,12 @@ public class Card {
      if ( (this.action == 4 || this.action == 5) && card.getAction() == 0){//wild cards
        System.out.println("playable wild");
        return true;
+     }
+     
+     // if there wild or wild4 card on top of place pile, can place any numerical card
+     if ( this.action == 0 && (card.getAction() == 4 || card.getAction() == 5) ){
+        System.out.println("wild card place pile can place number card");
+        return true; 
      }
 
      return false;
