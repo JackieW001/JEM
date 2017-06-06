@@ -45,7 +45,8 @@ public class Card {
     PImage cardImg;
     int cardHeight;
     int cardWidth;
-    int cardX,cardY;
+    int cardX = 0;
+    int cardY = 0;
     
     /***************** CONSTRUCTOR *************************/
     Card(int newVal, int newColor, int newAction){
@@ -90,6 +91,7 @@ public class Card {
     }
     
     public void display(int x, int y){
+
        cardX = x;
        cardY = y;
        image(cardImg, x, y);
@@ -112,7 +114,7 @@ public class Card {
        return c; 
     }
     
-    public void setC( int newC){
+    public void setC( int newC ){
        c = newC; 
     }
     public int getAction(){

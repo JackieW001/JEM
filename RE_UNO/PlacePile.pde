@@ -5,19 +5,16 @@ public class PlacePile{
    /***************** CONSTRUCTOR *************************/
    PlacePile(){
      pile = new ArrayList<Card>();
-     pile.add(firstCard(_drawPile));
+     pile.add(initCard());
    }
    /********************************************************/
    
-   public Card firstCard(DrawPile d){
-     int x = 0;
-     for (int i = 0; i < d.getSize(); i++){
-       if (d.getCard(i).isStarter()){
-         x = i;
-       }
+   public Card initCard(){
+     Card _drawPileCard = _drawPile.removeCard();
+     while (_drawPileCard.getAction() != 0 ){
+        _drawPileCard = _drawPile.removeCard();
      }
-     Card retC = d.getCard(x);
-     return retC;
+     return _drawPileCard;
    }
    
    /********************************************************

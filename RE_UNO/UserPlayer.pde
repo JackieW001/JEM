@@ -25,7 +25,7 @@ public class UserPlayer extends Player {
    * bottom of the display window
    ******************************************************/
   public void displayHand() {
-    //sortHand();
+    sortHand();
     // spacing between cards
     space = 70; 
     if (getHandSize() > 10)
@@ -34,16 +34,12 @@ public class UserPlayer extends Player {
       space = 50;
 
     // position of left most card
-    int offset = (width/2) - (space*((getHandSize() - 1)/2)) - 30;
+    int offset = (width/2) - (space*((getHandSize()-1)/2)) - 30;
 
     for (int i = 0; i < hand.size(); i++) {
       int ypos = height-hand.get(i).cardHeight-20;
-      
       if (hand.get(i).isMouseInRange()) {
         // moves card up 
-        System.out.println("Card index in hand: " + i);
-        System.out.println("x range: " + hand.get(i).cardX + "," + (hand.get(i).cardX + space));
-        System.out.println("x,y: " + mouseX + "," + mouseY);
         ypos -= 30;
       }
       

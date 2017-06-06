@@ -107,6 +107,7 @@ public void draw(){
     //Group play() loop, goes to each player
     group.play();
     group.pass();
+    /*
     //Nothing happens if buttonPressed, else do this
     if (buttonPressed) {
     } 
@@ -160,4 +161,5 @@ public void draw(){
       textSize(26);
       text(s, buttonX+90, buttonY+462);
     }
+    */
 }
