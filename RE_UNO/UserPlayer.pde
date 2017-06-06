@@ -40,7 +40,10 @@ public class UserPlayer extends Player {
       int ypos = height-hand.get(i).cardHeight-20;
       
       if (hand.get(i).isMouseInRange()) {
-        // moves card up if it is chosen card( ie mouse is in the range of the card)
+        // moves card up 
+        System.out.println("Card index in hand: " + i);
+        System.out.println("x range: " + hand.get(i).cardX + "," + (hand.get(i).cardX + space));
+        System.out.println("x,y: " + mouseX + "," + mouseY);
         ypos -= 30;
       }
       
@@ -58,13 +61,6 @@ public class UserPlayer extends Player {
     }
   }
 
-  /*
-  public void noAction() {
-    if (noAction) {
-      _user.drawCard();
-    }
-  }
-  */
   
   //Displays the endTurn Button on the interface
   public void displayEndTurnButton() {

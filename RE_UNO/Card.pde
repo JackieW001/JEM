@@ -126,7 +126,7 @@ public class Card {
     * Checks to see if mouse is in range of card
     ******************************************************/
     public boolean isMouseInRange(){
-       if (mouseX > this.cardX && mouseX <  this.cardX + _user.space && 
+       if (mouseX > this.cardX && mouseX <=  this.cardX + _user.space && 
            mouseY > this.cardY ){
              return true;
            }
@@ -158,8 +158,8 @@ public class Card {
          return true;
      }
      
-     // place wild card anytime only if first card on place pile is a numerical card
-     if ( (this.action == 4 || this.action == 5) && card.getAction() == 0){//wild cards
+     // place wild card anytime 
+     if ( this.action == 4 || this.action == 5 ){//wild cards
        System.out.println("playable wild");
        return true;
      }
@@ -178,11 +178,6 @@ public class Card {
       
       // match value
       if (card.getAction() == 0 && card.getValue() == this.value){
-         return true; 
-      }
-      
-      // match action
-      if (this.value == 99 && card.value == 99 && card.getAction() == this.action ) {
          return true; 
       }
       

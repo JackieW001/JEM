@@ -59,34 +59,38 @@ public void mouseClicked(){
   //checks if the mouse clicked on a button, if so, set buttonPressed to true
   if (mouseX > buttonX && mouseX < buttonX+buttonW && mouseY > buttonY && mouseY < buttonY+buttonH)
       buttonPressed = true;
+      
   //checks if the currentPlayer is the _user
   if (group.currentPlayer.equals(_user)){
     //For each card in the user's hand
     for (int i = 0; i < _user.hand.size(); i++){ 
+      
       //checks if the card is within the mouse's range
       if(_user.hand.get(i).isMouseInRange()){ 
-         Card chosenCard = _user.hand.remove(i); //removes chosen card
-         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){ //Checks if a combo can be playable (cards with same number value)
-           _placePile.add(chosenCard);
+         Card chosenCard = _user.hand.get(i); 
+         
+         //Checks if a combo can be playable (cards with same number value)
+         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){ 
+           _placePile.add(_user.hand.remove(i));
            _user.numOfCardsPlaced++;
          }
+         
          else if ( _user.numOfCardsPlaced == 0 && chosenCard.playable(_placePile.peek())){
            System.out.println("action?:" + chosenCard.action);
            if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
-           _placePile.add(chosenCard); 
+           _placePile.add(_user.hand.remove(i)); 
            _user.numOfCardsPlaced++;
          }
-         else { 
-           /* DISPLAY SOME KIND OF ERROR MESSAGE */
-         _user.hand.add(i, chosenCard); 
-         }
+         
        }
      }
+     
      if(_user.isInRangeOfEndButton()){
          if (_user.numOfCardsPlaced == 0){ _user.drawCard(); }
          _user.endTurn();
          _user.numOfCardsPlaced = 0;
      }
+     
      if (_drawPile.isInRange())
         _user.drawCard();
        
