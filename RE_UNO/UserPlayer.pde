@@ -4,16 +4,19 @@ public class UserPlayer extends Player {
   // used to allow to place combos
   int numOfCardsPlaced;
   boolean noAction = true;
+  int formerHandSize;
 
   /***************** CONSTRUCTOR *************************/
   UserPlayer() {
     name = "You";
     hand = new  ArrayList<Card>();
+    formerHandSize = 0;
   }
 
   UserPlayer( String s ) {
     name = s;
     hand = new  ArrayList<Card>();
+    formerHandSize = 0;
   }
   /********************************************************/
 
@@ -125,6 +128,11 @@ public class UserPlayer extends Player {
   }
 
   public void endTurn() {
+    if (formerHandSize == hand.size()){
+      System.out.println("Auto drawing a card");
+      drawCard();
+    }
+    formerHandSize = hand.size(); 
     super.endTurn();
     hideEndButton();
   }

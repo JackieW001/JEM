@@ -147,7 +147,7 @@ public abstract class Player {
   }
 
   public void endTurn() {
-    if (this.numOfCardsPlaced == 0){
+    if (this.numOfCardsPlaced == 0 && !(this.equals(_user))){
        this.drawCard(); 
     }
     if (group.isClockwise)
