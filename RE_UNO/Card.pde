@@ -126,8 +126,7 @@ public class Card {
     * Checks to see if mouse is in range of card
     ******************************************************/
     public boolean isMouseInRange(){
-       if (mouseX > this.cardX && mouseX <=  this.cardX + _user.space && 
-           mouseY > this.cardY ){
+       if (mouseX > this.cardX && mouseX <=  this.cardX + _user.space && mouseY > this.cardY ){
              return true;
            }
        else {
