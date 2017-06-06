@@ -50,7 +50,6 @@ public void mouseClicked(){
          if ( _user.numOfCardsPlaced >= 1 && _placePile.peek().playableInCombo(chosenCard)){
            _placePile.add(chosenCard);
            _user.numOfCardsPlaced++;
-           _user.noAction = false;
          }
          
          else if ( _user.numOfCardsPlaced == 0 && _placePile.peek().playable(chosenCard)){
@@ -58,7 +57,6 @@ public void mouseClicked(){
            if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
            _placePile.add(chosenCard); 
            _user.numOfCardsPlaced++;
-           _user.noAction = false;
          }
          
          else { 
@@ -68,7 +66,7 @@ public void mouseClicked(){
      }
      
      if(_user.isInRangeOfEndButton()){
-         if (_user.noAction){ _user.drawCard(); }
+         if (_user.numOfCardsPlaced == 0){ _user.drawCard(); }
          _user.endTurn();
          _user.numOfCardsPlaced = 0;
      }
