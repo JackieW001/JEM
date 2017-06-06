@@ -127,7 +127,7 @@ public class Card {
     ******************************************************/
     public boolean isMouseInRange(){
        if (mouseX > this.cardX && mouseX <  this.cardX + _user.space && 
-           mouseY > this.cardY){
+           mouseY > this.cardY && mouseY < this.cardY + this.cardHeight){
              return true;
            }
        else {
@@ -166,8 +166,8 @@ public class Card {
 
      return false;
    }
-  
-   public boolean playableInCombo(Card card){
+   
+    public boolean playableInCombo(Card card){
       // card should always be _placePile.peek()
       
       // match value
