@@ -1,16 +1,26 @@
-
 //Variables
 
+//DrawPile - uses ArrayList to hold all cards, basically the deck for drawing cards for players
 DrawPile _drawPile;
+//PlacePile - like DrawPile. but rather uses a pile algorithm
 PlacePile _placePile;
+//UserPlayer - The user (which is you!)
 UserPlayer _user;
+//AIPlayer(s) - the 3 AIs the user faces against, use algo to determine their actions
 AIPlayer AI1,AI2,AI3;
+//Group - Puts all players in a group, makes it easier for pass()ing and functionality
 Group group;
+//Buttons 
 int buttonW, buttonH, buttonX, buttonY;
+//Checks if a button has been pressed or not, specifically the one's that are above this comment
 boolean buttonPressed;
 
 
-//Setups the interface
+/***************************************************
+  setup() - Sets up the window size, instantiates
+  the players and piles, drawsCards, prepares
+  the game
+***************************************************/
 
 public void setup(){
     size(1000,700);
@@ -27,7 +37,7 @@ public void setup(){
     AI2 = new AIPlayer(2, "Maggie");
     AI3 = new AIPlayer(3, "Jackie");
     group = new Group();
-    group.setRoundRobin();
+    group.setRoundRobin(); //sets up the ordering of the players, turn wise
     
 
     // init player hand
@@ -40,15 +50,23 @@ public void setup(){
     }
 }
 
-//Based on what the mouse clicked on, does a certain action
+/***************************************************
+  mouseClicked() - does a certain action based on
+  whether a mouse clicked on a button or not, and if
+  the currentPlayer is the _user.
+***************************************************/
 public void mouseClicked(){
+  //checks if the mouse clicked on a button, if so, set buttonPressed to true
   if (mouseX > buttonX && mouseX < buttonX+buttonW && mouseY > buttonY && mouseY < buttonY+buttonH)
       buttonPressed = true;
+  //checks if the currentPlayer is the _user
   if (group.currentPlayer.equals(_user)){
-    for (int i = 0; i < _user.hand.size(); i++){
-      if(_user.hand.get(i).isMouseInRange()){
-         Card chosenCard = _user.hand.remove(i);
-         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){
+    //For each card in the user's hand
+    for (int i = 0; i < _user.hand.size(); i++){ 
+      //checks if the card is within the mouse's range
+      if(_user.hand.get(i).isMouseInRange()){ 
+         Card chosenCard = _user.hand.remove(i); //removes chosen card
+         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){ //Checks if a combo can be playable (cards with same number value)
            _placePile.add(chosenCard);
            _user.numOfCardsPlaced++;
          }

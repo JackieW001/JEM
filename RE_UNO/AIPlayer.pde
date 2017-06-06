@@ -106,14 +106,6 @@ public class AIPlayer extends Player {
    * when the previous player is about to win, draw a card and end the turn instead.  Otherwise, find and play the longest
    * combo (one can theoretically rule that you should play single cards first and leave the combos for later... <in which 
    * case simply look for the shortest possibleMove combo>).  If no card can be played, then draw a card.
-   *
-   * Future ToDos
-   * ------------
-   * Improvement for round 4 AI (probably won't get to it)
-   * Modify the round 2 algorithm to get rid of lonely strays first, saving combos (particulary those composed of multiple
-   * colors for later).  This decreases the chance of the need to draw cards in the future.  Also modify the round 3 heuristic
-   * to take into account the players coming after (ie if you have two skip cards and the next two players are both about to win,
-   * play both cards if possible instead of just one).
    */
 
   private ArrayList<Card> getBestMoveToThwartWin(){
