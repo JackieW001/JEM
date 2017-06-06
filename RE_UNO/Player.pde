@@ -114,34 +114,34 @@ public abstract class Player {
     }
   }
 
-  /*===================================
-   addBattle() - for +2 and +4
+/*===================================
+   addBattle() - for +2 and +4, starts by
+   going to the next player after the player
+   who initially placed the action card.
    ===================================*/
-  void addBattle(int x) {
-    if ( hasToF(group.currentPlayer.getHand(), 2) >=  0 ) {
-      group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 2) );
-      group.pass();
-      addBattle(x + 2);
-      return;
-    } else if ( hasToF(group.currentPlayer.getHand(), 4) >= 0) {
-      group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 4) );
-      group.pass();
-      addBattle(x + 4);
-      return;
-    } else {
-      for (int y = 0; y < x; y++) {
-        group.currentPlayer.drawCard();
+  void addBattle(int x) { //Usually starts off with 2 or 4
+      if ( hasToF(group.currentPlayer.getHand()) >=  0 ) { //Checks if it has a +2 or +4 that is playable
+        if (group.currentPlayer.equals(_user)){ //Checks if the current player is the user
+          //Nothing for now
+        }
+        else {
+          group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand()) ); //places the card that counters it
+          group.currentPlayer.endTurn(); //Goes to the next player
+          addBattle(x + _placePile.peek().getAction() - 1); //does addBattle of x + 2 or + 4, depending on which of the ones were placed
+        }
+        return; //ends addBattle
       }
-    }
+    for (int y = 0; y < x; y++) {
+        group.currentPlayer.drawCard();
+      }    
   }
 
-  int hasToF(ArrayList<Card> c, int a) {
+//Returns the index of the first playable card for +2/+4
+  int hasToF(ArrayList<Card> c) {
     for (int x = 0; x < c.size(); x++) {
-      if (c.get(x).getAction() == a) {
-        if (c.get(x).playable( _placePile.getCard( _placePile.size()-1 )) ) {
+        if ( c.get(x).playable(_placePile.peek()) ) {
           return x;
-        }
-      }
+        }    
     }
     return -1;
   }
