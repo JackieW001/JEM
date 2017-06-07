@@ -195,18 +195,7 @@ public class AIPlayer extends Player {
 
     //Prints the hand and bestMove to use in terminal, used for clarity for ourselves
     println(hand);
-    println(bestMove);
-
-    //Chooses the best choice
-    for (int bestMoveIndex = 0; bestMoveIndex < bestMove.size(); bestMoveIndex++) {
-      Card bestMoveCardAtIndex = bestMove.get(bestMoveIndex);  
-      if (bestMoveCardAtIndex.action != 0) { //Tries to avoid cards with no action for best move
-        this.giveAction(bestMoveCardAtIndex);
-      }
-      //Removes the card with the bestMove from hand, and places it on the pile
-      hand.remove(bestMoveCardAtIndex);
-      _placePile.add(bestMoveCardAtIndex);
-    }
+    println(bestMove);  
 
     Player prevPlayer = getPrev();
     boolean playingReverseWhenPreviousPlayerIsAboutToWin = false;
@@ -219,7 +208,21 @@ public class AIPlayer extends Player {
 
     if (noPossibleMove || playingReverseWhenPreviousPlayerIsAboutToWin) {
       this.drawCard();
+      super.endTurn();
+      return;
     }
+    
+    //Chooses the best choice
+    for (int bestMoveIndex = 0; bestMoveIndex < bestMove.size(); bestMoveIndex++) {
+      Card bestMoveCardAtIndex = bestMove.get(bestMoveIndex);  
+      if (bestMoveCardAtIndex.action != Card.NOACTION) {
+        // If an action card was played, cause the action to happen
+        this.giveAction(bestMoveCardAtIndex);
+      }
+      hand.remove(bestMoveCardAtIndex);
+      _placePile.add(bestMoveCardAtIndex);
+    }
+    
     super.endTurn();
   }
 }

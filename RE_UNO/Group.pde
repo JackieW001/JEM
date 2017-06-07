@@ -74,6 +74,12 @@ public class Group {
     AI2.displayHand();
     AI3.displayHand();
     
+    println(_user.getHandSize());
+    println(AI1.getHandSize());
+    println(AI2.getHandSize());
+    println(AI3.getHandSize());
+    println("__________________________________");
+    
     //If user manages to place all their cards
     if (_user.getHandSize() == 0 ) { 
       text("YOU WON!!", width/2-30, height/2+70); 

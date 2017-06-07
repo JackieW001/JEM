@@ -25,7 +25,6 @@ public class UserPlayer extends Player {
    * bottom of the display window
    ******************************************************/
   public void displayHand() {
-    sortHand();
     // spacing between cards
     space = 70; 
     if (getHandSize() > 10)
@@ -54,6 +53,7 @@ public class UserPlayer extends Player {
   public void drawCard() {
     if ( hand.size() < 26) {
       hand.add(_drawPile.removeCard());
+      sortHand();
     }
   }
   /*****************************************************
