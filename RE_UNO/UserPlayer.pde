@@ -151,6 +151,7 @@ public class UserPlayer extends Player {
   * Accounts for if the user player is skipped
   ******************************************************/
   public void endTurn() {
+    numOfCardsPlaced = 0;
     super.endTurn();
     hideEndButton();
   }
