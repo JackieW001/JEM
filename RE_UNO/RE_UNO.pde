@@ -69,13 +69,15 @@ public void mouseClicked(){
       if(_user.hand.get(i).isMouseInRange()){ 
          Card chosenCard = _user.hand.get(i); 
          
+         System.out.println("number of cards placed: " + _user.numOfCardsPlaced);
+         
          //Checks if a combo can be playable (cards with same number value)
-         if ( _user.numOfCardsPlaced >= 1 && chosenCard.playableInCombo(_placePile.peek())){ 
+         if ( chosenCard.playableInCombo(_placePile.peek()) && _user.numOfCardsPlaced >= 1){ 
            _placePile.add(_user.hand.remove(i));
            _user.numOfCardsPlaced++;
          }
          
-         else if ( _user.numOfCardsPlaced == 0 && chosenCard.playable(_placePile.peek())){
+         else if ( chosenCard.playable(_placePile.peek()) && _user.numOfCardsPlaced == 0){
            System.out.println("action?:" + chosenCard.action);
            if (chosenCard.action != 0) { System.out.println("in action"); _user.giveAction(chosenCard); }
            _placePile.add(_user.hand.remove(i)); 

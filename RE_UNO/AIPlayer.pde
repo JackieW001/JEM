@@ -217,5 +217,6 @@ public class AIPlayer extends Player {
       this.drawCard();
     }
     super.endTurn();
+    _user.numOfCardsPlaced = 0;
   }
 }

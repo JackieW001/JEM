@@ -141,7 +141,8 @@ public class Card {
     // only called when you place first card
     public boolean playable(Card card){
      // variable card should always _placePile.peek()
-      
+     System.out.println("in playable chosen card: " + c + ", " + value + "," + action );
+     System.out.println("in playable place pile card: " + card.getC() + ", " + card.getValue() + "," + card.getAction() );
      // match color
      if (card.getC() == this.c){
        System.out.println("playable color");

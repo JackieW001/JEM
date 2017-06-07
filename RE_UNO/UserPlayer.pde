@@ -62,6 +62,7 @@ public class UserPlayer extends Player {
   public void displayEndTurnButton() {
     if (group.currentPlayer.name.equals("You")) {
       fill(#6FCFEA);
+      strokeWeight(1);
       stroke(#2A819B);
       rect(width/2-100, height/2+90, 200, 90, 45);
       textSize(32);
