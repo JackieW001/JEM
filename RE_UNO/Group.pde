@@ -2,9 +2,9 @@ public class Group {
 
   //Variables
   Player currentPlayer;
-  boolean isClockwise;
-  boolean isActionTaken;
+  boolean isClockwise; //Checks if it's going clockwise or counter-clockwise, used for reverse action cards
 
+  //Constructor
   Group() {
     currentPlayer = null;
     isClockwise = true;
@@ -36,21 +36,26 @@ public class Group {
         isClockwise = !isClockwise;
     }
   }
+  
   //play method as a loop
   public void play() {
+    //Sets the background to this color
     background(#62B475);
+    //Checks if any of the players have won or not
     if (AI1.getHandSize() > 0 && AI2.getHandSize() > 0 && AI3.getHandSize() > 0 && _user.getHandSize() > 0) {
       if (!this.currentPlayer.equals(_user)) {
         delay(1500);
       } 
       
+      //Starts with the current player playing
       textSize(15);
       fill(0);
+      //Displays the current player on top left side of the screen
       text("Current Player: " + currentPlayer.name, 20, 40);
       
       this.currentPlayer.play();
 
-      // endTurn button
+      //endTurn button
       if (currentPlayer.equals(_user)) { 
         _user.displayEndTurnButton();
       } else { 
@@ -61,6 +66,7 @@ public class Group {
     textSize(32);
     fill(0);
     
+    //Displays the hands of the players and the piles
     _user.displayHand();
     _drawPile.displayPile();
     _placePile.displayPile();
@@ -68,10 +74,13 @@ public class Group {
     AI2.displayHand();
     AI3.displayHand();
     
+    //If user manages to place all their cards
     if (_user.getHandSize() == 0 ) { 
       text("YOU WON!!", width/2-30, height/2+70); 
       noLoop();
-    } else if ( AI1.getHandSize() == 0 || AI2.getHandSize() == 0 || AI3.getHandSize() == 0 ) {
+    } 
+    //Else if an AI manages to do it before player
+    else if ( AI1.getHandSize() == 0 || AI2.getHandSize() == 0 || AI3.getHandSize() == 0 ) {
       text("YOU LOST!!", width/2-30, height/2+70);
       noLoop();
     }

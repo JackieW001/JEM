@@ -1,5 +1,7 @@
 public class Card {
   
+  //Final Variables
+  //Represents the colors/actions it can be
     public static final int NOCOLOR = 0;
     public static final int RED = 1;
     public static final int YELLOW = 2;
@@ -63,7 +65,10 @@ public class Card {
         cardHeight = cardImg.height;
         cardWidth = cardImg.width;
     }
-    /********************************************************/
+    /****************************
+    toString() - returns each
+    card's information
+    ****************************/
     
     public String toString(){
       int colour = getC();
@@ -90,13 +95,14 @@ public class Card {
       return colorValue + " " + cardValue;
     }
     
+    //Displays the card at the x/y value
     public void display(int x, int y){
-
        cardX = x;
        cardY = y;
        image(cardImg, x, y);
     }
     
+    //Displays the card at the x/y value face up or down
     public void display(int x, int y, String choice){
        if (choice.equals("faceDown")){
           cardImg = loadImage("./img/99_99_99.jpg");
@@ -106,20 +112,18 @@ public class Card {
        image(cardImg, x, y);
     }
     
+    //Accessor Methods
     public int getValue(){
        return value; 
     }
-    
     public int getC(){
        return c; 
-    }
-    
-    public void setC( int newC ){
-       c = newC; 
-    }
+    }  
     public int getAction(){
        return action; 
     }
+    
+    //Mutator Methods
     public void setColor(int x){
        c = x; 
     }
@@ -141,8 +145,7 @@ public class Card {
     // only called when you place first card
     public boolean playable(Card card){
      // variable card should always _placePile.peek()
-     System.out.println("in playable chosen card: " + c + ", " + value + "," + action );
-     System.out.println("in playable place pile card: " + card.getC() + ", " + card.getValue() + "," + card.getAction() );
+      
      // match color
      if (card.getC() == this.c){
        System.out.println("playable color");
@@ -150,19 +153,19 @@ public class Card {
      }
      
      // match value
-     if (this.action == 0 && card.getAction() == 0 && card.getValue() == this.value){
+     else if (this.action == 0 && card.getAction() == 0 && card.getValue() == this.value){
        System.out.println("playable value");
        return true;
      }
      
      // match action
-     if (this.action != 0 && card.getAction() != 0 && card.getAction() == this.action){
+     else if (this.action != 0 && card.getAction() != 0 && card.getAction() == this.action){
          System.out.println("playable action"); 
          return true;
      }
      
      // place wild card anytime 
-     if ( this.action == 4 || this.action == 5 ){//wild cards
+     else if ( this.action == 4 || this.action == 5 ){//wild cards
        System.out.println("playable wild");
        return true;
      }
@@ -176,7 +179,13 @@ public class Card {
      return false;
    }
    
-    public boolean playableInCombo(Card card){
+   /*********************************
+   playableInCombo() - method to check
+   if the card placed can also be
+   placed with a combo 
+   *********************************/
+   
+   public boolean playableInCombo(Card card){
       // card should always be _placePile.peek()
       
       // match value
@@ -192,6 +201,12 @@ public class Card {
       return false;
    }
    
+   /*******************************
+   compareTo(Card other) - compares
+   this() card with other, returns int
+   that is used in UserPlayer class
+   for heapifying/sorting their hand
+   *******************************/
    
    public int compareTo( Card other){
        if (this.getValue() < other.getValue()){
@@ -222,6 +237,12 @@ public class Card {
        return 0;
    } // compareTo
    
+   /*****************************************
+     isStarter() - Checks if the card can be 
+     the starting card (for _placePile, we 
+     want only the first card to be number 
+     cards, no action cards).
+   *****************************************/
    public boolean isStarter(){
      if (this.getAction() == 0){
        return true;

@@ -102,7 +102,6 @@ public class DrawPile{
       if (pile.size() > 0){
          return pile.remove(pile.size()-1);
        }
-      textSize(0);
       text("No more cards", width/2-70, height/2-50);
       noLoop();
       return null;
@@ -121,6 +120,8 @@ public class DrawPile{
         return false;
    }
       
+      
+   //addCard(Card card) - used to add the param (card) at the top of the pile   
    public void addCard(Card card){
      pile.add(0, card);
    }

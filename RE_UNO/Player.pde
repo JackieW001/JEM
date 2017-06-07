@@ -2,12 +2,19 @@
 public abstract class Player {
 
   ArrayList<Card> hand; // max 20 cards 
-  String name;
-  Player next, prev;
-  boolean isSkipped;
-
+  String name; 
+  Player next, prev; //Used in Group
+  boolean isSkipped; //Checks if the Player have been skipped or not
+  boolean wait;
+  boolean input;
+  int wild;
+  
+  //Constructor 
   Player() {
     hand = new ArrayList<Card>();
+    wait = false;
+    input = false;
+    wild = 0;
   }
 
   /**************** ACCESSORS AND MUTATORS ****************/
@@ -31,11 +38,19 @@ public abstract class Player {
   public void setNext(Player newNext) { 
     next = newNext;
   }
+  public String toString(){
+   return name; 
+  }
   public void placeCard(int i) { 
     _placePile.add(hand.remove(i));
   }
   /********************************************************/
 
+  /*********************************************************
+  giveAction(Card card) - Used to give the nextPlayer a 
+  certain action, depending on what action card the
+  current player has placed.
+  ********************************************************/
   public void giveAction( Card card) {
     Player nextPlayer;
     if (group.isClockwise)
@@ -48,8 +63,26 @@ public abstract class Player {
       addBattle(4);
       return;
     }
-    
-
+    if (card.getAction() == 4){
+     /*
+      if (group.currentPlayer.equals(_user)){
+        wait = true;
+        
+        while (wait){
+          text("Press a number for determining the color, 1 - Red, 2 - Yellow, 3 - Green, 4 - Blue", 50, 50); 
+        }
+        
+        if (wild > 0) {
+          _placePile.peek().setColor(wild);
+          wild = 0;
+          System.out.println("Color is now " + _placePile.peek().getC());
+          group.currentPlayer.endTurn();
+          return;
+        }
+        else {_placePile.peek().setColor((int)(Math.random() * 4)+1);}
+      }
+      */
+    }
     if (card.getAction() == 3) {//+2
       group.currentPlayer.endTurn();
       addBattle(2);
@@ -64,43 +97,111 @@ public abstract class Player {
     if (card.getAction() == 1) {//reverse
       group.isClockwise = !group.isClockwise;
       return;
-    } else {
+    } 
+    else {
       return;
     }
   }
 
-  /*===================================
+ /*===================================
    addBattle() - for +2 and +4
+   Starts an addBattle of +2 or +4
+   between the players after a +2/+4
+   action card has been placed.
+   If not able to fight, will be forced
+   to get the cards.
    ===================================*/
   void addBattle(int x) {
-    if ( hasToF(group.currentPlayer.getHand(), 2) >=  0 ) {
-      group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 2) );
-      group.currentPlayer.endTurn();
-      addBattle(x + 2);
-      return;
-    } else if ( hasToF(group.currentPlayer.getHand(), 4) >= 0) {
-      group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 4) );
-      group.currentPlayer.endTurn();
-      addBattle(x + 4);
-      return;
-    } else {
+    /*if (group.currentPlayer.equals(_user)){
+      wait = true;
+      while (wait){
+        text("Press Y to place, and N to not place", 50, 50); 
+      }
+      if (input == false) {
       for (int y = 0; y < x; y++) {
         group.currentPlayer.drawCard();
       }
+      input = false;
+      System.out.println(group.currentPlayer + " is drawing cards");
+      group.currentPlayer.endTurn();
+      return;
+        }       
     }
+    */
+    System.out.println("AddBattle: " + x);
+    delay(250);
+    if ( hasToF(group.currentPlayer.getHand(), 3) > -1) {
+      if (group.currentPlayer.equals(_user)){_user.placeCard( hasToF (group.currentPlayer.getHand(), 3) );}
+      else group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 3) );
+      group.currentPlayer.endTurn();
+      System.out.println("AddBattle goes to" + group.currentPlayer);
+      delay(500);
+      addBattle(x + 2);
+      return;
+      } 
+    else if ( hasToF(group.currentPlayer.getHand(), 5) > -1) {
+      if (group.currentPlayer.equals(_user)){_user.placeCard( hasToF (group.currentPlayer.getHand(), 5) );}
+      else group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 5) );
+      group.currentPlayer.endTurn();
+      System.out.println("AddBattle goes to" + group.currentPlayer);
+      delay(500);
+      addBattle(x + 4);
+      return;
+      } 
+    for (int y = 0; y < x; y++) {
+        group.currentPlayer.drawCard();
+      }
+      System.out.println(group.currentPlayer + " is drawing cards");
   }
+  /*
+  void keyPressed(){
+     if (key == 'y'){
+       wait = false;
+       input = true;
+     }
+     else if (key == 'n'){
+        wait = false; 
+     }
+     else if (key == '1'){
+       wait = false; 
+       wild = 1;
+     }
+     else if (key == '2'){
+       wait = false; 
+       wild = 2;
+     }
+     else if (key == '3'){
+       wait = false; 
+       wild = 3;
+     }
+     else if (key == '4'){
+       wait = false; 
+       wild = 4;
+     }
+  }
+  */
 
+  /*************************************
+  hasToF (a.k.a. hasTwoOrFour) -
+  helperMethod to addBattle(int x),
+  used to check if any card is playable
+  with the action card, and if so, returns
+  the int of the index of the card that
+  is playable
+  *************************************/
   int hasToF(ArrayList<Card> c, int a) {
     for (int x = 0; x < c.size(); x++) {
-      if (c.get(x).getAction() == a) {
-        if (c.get(x).playable( _placePile.getCard( _placePile.size()-1 )) ) {
-          return x;
+      if (c.get(x).getAction() == a) {//Checks if the action is +2 or +4wild
+        if (c.get(x).playable( _placePile.peek())) { //Checks if it's playable
+            return x;
         }
       }
     }
     return -1;
   }
 
+//endTurn() - ends the turn of the player, goes to next player
+//checks if it's clockwise or counterclockwise, and goes that direction
   public void endTurn() {
     if (group.isClockwise)
       group.currentPlayer = group.currentPlayer.getNext(); 

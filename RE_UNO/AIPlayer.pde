@@ -1,6 +1,10 @@
+/*
+AI Class, used for each AI, has method to give it decision-making skills.
+Uses it to decide the best move/approach for it's turn, and is able to make
+combos, as well as play action cards depending on the situation.
+*/
 public class AIPlayer extends Player {
-
-
+  
   // index determines AI1, AI2, AI3
   int index;
   PImage cardImg;
@@ -217,6 +221,5 @@ public class AIPlayer extends Player {
       this.drawCard();
     }
     super.endTurn();
-    _user.numOfCardsPlaced = 0;
   }
 }
