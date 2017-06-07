@@ -63,41 +63,25 @@ public abstract class Player {
       addBattle(4);
       return;
     }
-    if (card.getAction() == 4){
-     /*
-      if (group.currentPlayer.equals(_user)){
-        wait = true;
-        
-        while (wait){
-          text("Press a number for determining the color, 1 - Red, 2 - Yellow, 3 - Green, 4 - Blue", 50, 50); 
-        }
-        
-        if (wild > 0) {
-          _placePile.peek().setColor(wild);
-          wild = 0;
-          System.out.println("Color is now " + _placePile.peek().getC());
-          group.currentPlayer.endTurn();
-          return;
-        }
-        else {_placePile.peek().setColor((int)(Math.random() * 4)+1);}
-      }
-      */
-    }
+
     if (card.getAction() == 3) {//+2
       group.currentPlayer.endTurn();
       addBattle(2);
       System.out.println("in draw 2");
       return;
     }
+    
     if (card.getAction() == 2) {//skip
       nextPlayer.isSkipped = true;
       System.out.println("in skip");
       return;
     }
+    
     if (card.getAction() == 1) {//reverse
       group.isClockwise = !group.isClockwise;
       return;
     } 
+    
     else {
       return;
     }
@@ -112,22 +96,7 @@ public abstract class Player {
    to get the cards.
    ===================================*/
   void addBattle(int x) {
-    /*if (group.currentPlayer.equals(_user)){
-      wait = true;
-      while (wait){
-        text("Press Y to place, and N to not place", 50, 50); 
-      }
-      if (input == false) {
-      for (int y = 0; y < x; y++) {
-        group.currentPlayer.drawCard();
-      }
-      input = false;
-      System.out.println(group.currentPlayer + " is drawing cards");
-      group.currentPlayer.endTurn();
-      return;
-        }       
-    }
-    */
+
     System.out.println("AddBattle: " + x);
     delay(250);
     if ( hasToF(group.currentPlayer.getHand(), 3) > -1) {
@@ -139,6 +108,7 @@ public abstract class Player {
       addBattle(x + 2);
       return;
       } 
+      
     else if ( hasToF(group.currentPlayer.getHand(), 5) > -1) {
       if (group.currentPlayer.equals(_user)){_user.placeCard( hasToF (group.currentPlayer.getHand(), 5) );}
       else group.currentPlayer.placeCard( hasToF(group.currentPlayer.getHand(), 5) );
@@ -148,38 +118,14 @@ public abstract class Player {
       addBattle(x + 4);
       return;
       } 
+      
     for (int y = 0; y < x; y++) {
         group.currentPlayer.drawCard();
       }
+      
       System.out.println(group.currentPlayer + " is drawing cards");
   }
-  /*
-  void keyPressed(){
-     if (key == 'y'){
-       wait = false;
-       input = true;
-     }
-     else if (key == 'n'){
-        wait = false; 
-     }
-     else if (key == '1'){
-       wait = false; 
-       wild = 1;
-     }
-     else if (key == '2'){
-       wait = false; 
-       wild = 2;
-     }
-     else if (key == '3'){
-       wait = false; 
-       wild = 3;
-     }
-     else if (key == '4'){
-       wait = false; 
-       wild = 4;
-     }
-  }
-  */
+
 
   /*************************************
   hasToF (a.k.a. hasTwoOrFour) -

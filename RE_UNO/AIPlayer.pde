@@ -104,12 +104,9 @@ public class AIPlayer extends Player {
    *
    * Iterate through the hand and create a list of all playable combos involving cards with numerical values.  First, 
    * check to see if the next player is about to win (1-2 cards left).  If true, try to play one of the following: 
-   * skip, draw 2, wild4, or reverse (if previous player isn't about to win).  Avoid wild card at all cost!!  Otherwise,
-   * Add any playable action cards separately (don't chain them; you usually only want to chain them only if you can 
-   * play them all <also there are rules against chaining draw 4s I think>).  If the longest combo means playing reverse
-   * when the previous player is about to win, draw a card and end the turn instead.  Otherwise, find and play the longest
-   * combo (one can theoretically rule that you should play single cards first and leave the combos for later... <in which 
-   * case simply look for the shortest possibleMove combo>).  If no card can be played, then draw a card.
+   * skip, draw 2, wild4, or reverse (if previous player isn't about to win). Leave wild card as last resort.  Otherwise,
+   * Add any playable action cards separately. If the longest combo means playing reverse  when the previous player is about to win,
+   * draw a card and end the turn instead.  Otherwise, find and play the longest combo. If no card can be played, then draw a card.
    */
 
   private ArrayList<Card> getBestMoveToThwartWin(){
