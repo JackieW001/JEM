@@ -152,6 +152,7 @@ public abstract class Player {
         group.currentPlayer.drawCard();
       }
       System.out.println(group.currentPlayer + " is drawing cards");
+      group.currentPlayer.endTurn();
   }
   /*
   void keyPressed(){
